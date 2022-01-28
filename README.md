@@ -1,16 +1,15 @@
 # Dotfiles
 
 Notes about what's going on here:
-- `Brewfile.arm64` contains a bunch of stuff I've installed using Homebrew, but
-  I don't do the best job maintaining it
-- `alacritty.yml` configures Alacritty, my current terminal emulator of choice
+- `Brewfile.arm64` contains a bunch of stuff I've installed using [Homebrew](https://brew.sh/), but I don't do the best job maintaining it
+- `alacritty.yml` configures [Alacritty](https://github.com/alacritty/alacritty), my current terminal emulator of choice
 - `bat.conf` configures [bat](https://github.com/sharkdp/bat)
 - `git-completion.zsh` and `git-prompt.sh` I took from elsewhere
 - `gitconfig` configures git
 - `ideavimrc` configures the vim plugin for Jetbrains IDE's
-- `init.vim` configures Neovim
+- `init.vim` configures [Neovim](https://github.com/neovim/neovim)
 - `psqlrc` configures psql for accessing Postgres databases
-- `tmuxconf` configures tmux
+- `tmuxconf` configures [tmux](https://github.com/tmux/tmux)
 
 A few more notes:
 - Why do I use Alacritty? Idk but I love it! I originally cloned the repo to toy
