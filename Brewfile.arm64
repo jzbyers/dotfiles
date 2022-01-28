@@ -1,0 +1,89 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+
+####################################################
+# Terminal
+####################################################
+
+# tmux for multiplexing
+brew "tmux"
+
+# zsh is my default shell
+brew "zsh"
+brew "zsh-autosuggestions"
+brew "zsh-syntax-highlighting"
+
+# exa is a replacement for ls
+brew "exa"
+
+# tree for viewing directory
+brew "tree"
+
+
+####################################################
+# Development
+####################################################
+
+#
+# Vim and Neovim
+#
+
+brew "vim"
+brew "luajit"
+brew "neovim"
+
+#
+# Infra
+#
+
+cask "google-cloud-sdk"
+cask "docker"
+brew "terraform"
+brew "helm"
+brew "kubectl"
+
+#
+# Languages and language tools
+#
+
+brew "llvm"
+
+brew "node"
+brew "nvm"
+brew "typescript"
+
+brew "protobuf"
+brew "prototool"
+
+brew "pyenv"
+brew "pyenv-virtualenv"
+brew "python@3"
+
+brew "go@1.17"
+
+#
+# GNU command line tools
+#
+
+brew "coreutils"
+brew "gzip"
+brew "watch"
+brew "make"
+
+#
+# Uncategorized
+#
+
+brew "graphviz"
+brew "yarn"
+brew "curl"
+brew "wget"
+brew "git"
+brew "fzf"
+brew "grep"
+brew "jq"
+brew "yq"
+brew "htop"
+brew "bat"
+brew "hey"

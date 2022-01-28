@@ -1,0 +1,28 @@
+-- Neovim as editor
+\setenv EDITOR "/opt/homebrew/bin/nvim"
+
+-- Auto formatting on width
+\x auto 
+
+-- Output timing for queries
+\timing
+
+-- Verbose error reports
+\set VERBOSITY verbose
+
+-- Log queries
+\set HISTFILE ~/.psql_history- :DBNAME
+\set HISTCONTROL ignoredups
+
+-- Autocomplete keywords (like SELECT) in upper-case, even if you start typing them in lower case
+\set COMP_KEYWORD_CASE upper
+
+-- Prompt format
+\set PROMPT1 '\n%[%033[0;31]%[%033[32m%]psql:%[%033[34m%]//%[%033[35m%]%n%[%033[34m%]@%[%033[36m%]%`hostname`:%>%[%033[33m%]/%/ %[%033[K%]%[%033[0m%]%[%033[0;36m%]%●%[%033[0;37m%] '
+\set PROMPT2 '%[%033[0;37m%]%| %[%033[0;36m%]%● %[%033[0;37m%] '
+
+-- By default, NULL displays as an empty space. Let's change that.
+\pset null '[null]'
+
+\pset format wrapped
+

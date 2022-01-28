@@ -1,0 +1,227 @@
+# ##############################################################################
+# general
+# ##############################################################################
+
+# Set prefix key to c-f instead of default c-b
+unbind C-b
+set -g prefix C-f
+bind C-f send-prefix
+
+# Set F4 to copy-mode instead of `<Prefix> [`, because we use `<Prefix> [` to
+# switch windows.
+bind -n F4 copy-mode
+
+# toogle last window by hitting again C-f
+bind C-f last-window
+
+set-option -g default-shell /bin/zsh
+
+set -g default-terminal "screen-256color" # colors!
+#set -g default-terminal "tmux-256color"
+setw -g xterm-keys on
+set -s focus-events on
+
+# Reload configuration
+bind r source-file ~/.tmux.conf \; display '~/.tmux.conf sourced'
+
+set-option -g history-limit 10000
+
+# ##############################################################################
+# display
+# ##############################################################################
+
+# Rename window to reflect current program
+setw -g automatic-rename on
+
+# Renumber windows when a window is closed
+set -g renumber-windows on
+
+# Start windows and panes at 1, not 0
+set -g base-index 1
+setw -g pane-base-index 1
+
+# Set terminal title
+set -g set-titles on
+
+# Activity
+set -g monitor-activity on
+set -g visual-activity off
+
+# Status bar basics
+set -g status on
+set -g status-interval 10
+set -g status-justify left
+set -g status-keys vi
+set -g status-position bottom
+set -g status-right '#[default] #(date)'
+# Status bar styles
+set -g status-style fg=white,bg=default
+setw -g window-status-current-style fg=black,bg=white
+
+# ##############################################################################
+# Vim-like bindings 
+# ##############################################################################
+
+setw -g mode-keys vi
+
+# Tmux offers a set of vi-like bindings for navigating a buffer in a window.
+# These allow you to not only navigate through the buffer beyond what your
+# screen is currently showing, but also to search all of the output generated
+# thus far, and to select and copy text that can be pasted in any other window
+# in the tmux session. You can enable this as a default setting with the
+# following. With this done, within a tmux instance, pressing <prefix>-[ will
+# enter copy mode, allowing you to copy texdt or view the history of the buffer,
+# including searching with / and ?. Most of the basic vi movements work. You can
+# leave this mode by pressing Enter.
+set-window-option -g mode-keys vi
+
+# Start copy-mode using '<Prefix> <Esc>'
+bind Escape copy-mode
+bind p paste-buffer
+# Use v to start selection in vi copy mode, and y to yank. You might need to 
+# enable your terminal to use the clipboard.
+bind -T copy-mode-vi v send -X begin-selection
+bind -T copy-mode-vi y send -X copy-pipe-and-cancel "reattach-to-user-namespace pbcopy"
+
+# ##############################################################################
+# navigation
+# ##############################################################################
+
+# Split horiziontal and vertical splits, instead of % and ". We also open them
+# in the same directory. 
+bind v split-window -h -c '#{pane_current_path}'
+bind s split-window -v -c '#{pane_current_path}'
+
+# Switch tmux windows using brackets
+# Usage without alacritty: `<Prefix> <[|]>` (two strokes)
+# Usage with alacritty: `<Command>-<Shift>-<[|]>` (one stroke)
+bind [  previous-window
+bind ] next-window
+
+# Vim-like movement between panes. We're going to create other key bindings for
+# these in alacritty.yml.
+# Usage without alacritty: `<Prefix> <j|k|h|l>` (two strokes)
+# Usage with alacritty: `<Command>-<j|k|h|l>` (one stroke)
+bind j select-pane -D
+bind k select-pane -U
+bind h select-pane -L
+bind l select-pane -R
+
+# Resize panes more easily
+# Usage without alacritty: `<Prefix> <J|K|H|L>` (two strokes)
+# Usage with alacritty: `<Command>-<right|left|up|down>` (one stroke)
+bind J resize-pane -D 10
+bind K resize-pane -U 10
+bind H resize-pane -L 10
+bind L resize-pane -R 10
+
+# Killing a pane is normally bound to '<Prefix> x', but let's bind it to
+# '<Prefix> w' and disable the confirmation
+# TODO: I think I want to find a better way to detatch the current client, which
+# is currently done with `<Prefix> d`.
+bind w kill-pane
+bind x kill-window
+bind q kill-session
+
+# C-d is a tricky devil. In a shell like Alacritty, it exits. If that shell is
+# running in the last pane of the last window in a tmux session, then the
+# session ends and the tmux client will exit. To prevent C-d from exiting a tmux
+# pane or session, you can set the IGNOREEOF shell variable. This setting below
+# will require you to press C-d 3 times to close the tmux pane or session.
+unbind C-d
+
+# '<Prefix> t' to equally size panes (`<Prefix> <Space>` will toggle between
+# different layouts).
+bind t select-layout tiled
+
+# Enable scrolling
+set -g mouse on
+
+######## iTerm + Tmux key integration #########
+# First of all, iTerm can send hex codes for shortcuts you define. So for
+# example you can send a hex code for the shortcut "c-f v" which in my case
+# opens a vertical pane (see setting above). The hex code for this combination
+# is: 0x06 0x76. There are many cases to find it out. One of them is the tool
+# 'xxd'
+
+# If you run "xxd -psd" and hit "c-f v" and then enter and finally c-c to exit
+# , it outputs the following:
+#
+# 	$ xxd -psd
+# 	^Fv
+# 	06760a^C
+#
+# What matters is the sequence  06760a^C where:
+#
+# 	06 -> c-f
+# 	76 -> v
+# 	0a -> return
+#	^C -> c-c
+#
+# From here, we know that 0x06 0x76 corresponds to "c-f v".
+#
+# Finally, inside the iTerm2 Key settings, I'm adding just various shortcuts,
+# such as cmd-j, cmd-left, etc.. , select the option "send hex code" and the
+# enter the hex code which I want to be executed, hence the tmux sequence. So
+# when I press CMD + d in iterm, I send the sequence 0x06 0x76,
+# which tmux inteprets it as opening a new pane. 
+###############################################
+
+######## Alacritty + Tmux key integration #########
+# First of all, Alacritty can send hex codes for shortcuts you define. So for
+# example you can send a hex code for the shortcut "c-f v" which in my case
+# opens a vertical pane (see setting above). The hex code for this combination
+# is: 0x06 0x76. There are many cases to find it out. One of them is the tool
+# 'xxd'
+
+# If you run "xxd -psd" and hit "c-f v" and then enter and finally c-c to exit
+# , it outputs the following:
+#
+# 	$ xxd -psd
+# 	^Fv
+# 	06760a^C
+#
+# What matters is the sequence  06760a^C where:
+#
+# 	06 -> c-f
+# 	76 -> v
+# 	0a -> return
+#	^C -> c-c
+#
+# From here, we know that 0x06 0x76 corresponds to "c-f v".
+#
+# Next step is to add a line to 'key_binding' setting in Alacritty:
+#
+#   - { key: D,        mods: Command,       chars: "\x06\x76"  } 
+#
+# That's it! The followings are the ones that I'm using:
+#
+#   key_bindings:
+#     - { key: D,        mods: Command,       chars: "\x06\x76" } 
+#     - { key: D,        mods: Command|Shift, chars: "\x06\x73" }
+#     - { key: W,        mods: Command,       chars: "\x06\x78" }
+#     - { key: H,        mods: Command,       chars: "\x06\x68" }
+#     - { key: J,        mods: Command,       chars: "\x06\x6a" }
+#     - { key: K,        mods: Command,       chars: "\x06\x6b" }
+#     - { key: L,        mods: Command,       chars: "\x06\x6c" }
+#     - { key: T,        mods: Command,       chars: "\x06\x63" }
+#     - { key: Key1,     mods: Command,       chars: "\x06\x31" }
+#     - { key: Key2,     mods: Command,       chars: "\x06\x32" }
+#     - { key: Key3,     mods: Command,       chars: "\x06\x33" }
+#     - { key: Key4,     mods: Command,       chars: "\x06\x34" }
+#     - { key: Key5,     mods: Command,       chars: "\x06\x35" }
+#     - { key: Key6,     mods: Command,       chars: "\x06\x36" }
+#     - { key: Key7,     mods: Command,       chars: "\x06\x37" }
+#     - { key: Key8,     mods: Command,       chars: "\x06\x38" }
+#     - { key: Key9,     mods: Command,       chars: "\x06\x39" }
+#     - { key: Left,     mods: Command,       chars: "\x06\x48" }
+#     - { key: Down,     mods: Command,       chars: "\x06\x4a" }
+#     - { key: Up,       mods: Command,       chars: "\x06\x4b" }
+#     - { key: Right,    mods: Command,       chars: "\x06\x4c" }
+#
+# Finally, inside the iTerm2 Key settings, I'm adding just various shortcuts,
+# such as cmd-j, cmd-left, etc.. , select the option "send hex code" and the
+# enter the hex code which I want to be executed, hence the tmux sequence. So
+# when I press CMD + d in iterm, I send the sequence 0x06 0x76,
+# which tmux inteprets it as opening a new pane. 
+###############################################

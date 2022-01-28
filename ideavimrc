@@ -1,0 +1,74 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" My must have settings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Remap leader from / to Space
+let mapleader=" "
+" Remap Esc to jj
+inoremap jj <Esc>
+" Remap Leader-s to Save
+nnoremap <Leader>s :w<CR>
+
+" Show hybrid line numbers
+set number relativenumber
+set nu rnu
+
+" Use spaces instead of tabs
+set expandtab
+
+set ai "Auto indent
+set si "Smart indent
+set wrap "Wrap lines
+
+" Enable vim paragraph motion
+set vim-paragraph-motion
+
+" Two-space indents in JSON
+autocmd! FileType json set sw=2 sts=2 expandtab
+
+" Tabs:
+set smarttab " tab respects `tabstop`, `shiftwidth`, and `softtabstop`
+set tabstop=4 " set the length of the \t character (the visible width of tabs)
+set softtabstop=4 " number of spaces in tab when editing
+set shiftwidth=4 " number of spaces to use for indent and unindent
+set expandtab " tabs are spaces
+set shiftround " round indent to a multiple of `shiftwidth`
+set nowrap
+set nolinebreak
+set textwidth=0
+set wrapmargin=0
+set visualbell
+set noerrorbells
+
+" Filetype Tabs:
+""" ts: number of spaces that \t in file use
+""" sts: number of spaces that new \t uses
+""" sw: number of spaces for autoindent
+autocmd FileType go setlocal ts=4 sts=4 sw=4
+autocmd FileType html setlocal ts=2 sts=2 sw=2
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2
+autocmd FileType typescript setlocal ts=2 sts=2 sw=2
+autocmd FileType javascriptreact setlocal ts=2 sts=2 sw=2
+autocmd FileType typescriptreact setlocal ts=2 sts=2 sw=2
+autocmd FileType python setlocal ts=2 sts=2 sw=2
+autocmd FileType ruby setlocal ts=2 sts=2 sw=2
+autocmd FileType json setlocal ts=2 sts=2 sw=2
+autocmd FileType cpp setlocal ts=2 sts=2 sw=2
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2
+autocmd FileType yml setlocal ts=2 sts=2 sw=2
+autocmd FileType sql setlocal ts=2 sts=2 sw=2
+
+" Code Navigation:
+"nnoremap <silent>gD :lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent>gd :action GotoDeclaration<CR>
+nnoremap <silent>gi :action GotoImplementation<CR>
+nnoremap <silent>gr :action FindUsages<CR>
+"nnoremap <silent>grn :lua vim.lsp.buf.rename()<CR>
+"nnoremap <silent>gh :lua vim.lsp.buf.hover()<CR>
+
+" Cursor Movement:
+nnoremap <C-j> 5<j>
+nnoremap <C-k> 5<k>
+
+nnoremap <C-e> 5<C-e>
+nnoremap <C-y> 5<C-y>

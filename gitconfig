@@ -1,0 +1,60 @@
+[user]
+	name = Jack Byers
+	email = jzbyers@gmail.com
+[alias]
+    # Modify the previous commit
+    amend = commit -a --amend
+    
+    f = fetch
+    co = checkout
+    
+    # Pull changes from remote, rebase local commits to come after the commits I
+    # pulled down, and remove remote-tracking branches that no longer exist on
+    # the remote.
+    up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+    
+    # List top 15 branches ordered by authordate
+    b = "!git for-each-ref --sort='-authordate' --format='%(authordate)%09%(objectname:short)%09%(refname)' refs/heads | sed -e 's-refs/heads/--'" | head -n 15
+    
+    l = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+    
+    d = diff
+    ds = diff --stat
+    dc = diff --cached
+    lb = !git reflog show --pretty=format:'%gs ~ %gd' --date=relative | grep 'checkout:' | grep -oE '[^ ]+ ~ .*' | awk -F~ '!seen[]++' | head -n 10 | awk -F' ~ HEAD@{' '{printf(\"  \\033[33m%s: \\033[37m %s\\033[0m\\n\", substr(, 1, length()-1), )}'
+    ten = !git --no-pager log -10 --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+[color]
+	ui = auto
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+[color "status"]
+	added = yellow
+	changed = green
+	untracked = cyan
+[core]
+	whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+	editor = nvim
+	quotepath = false
+	excludesfile = /Users/jackbyers/.gitignore
+[credential]
+	helper = osxkeychain
+[github]
+	user = jzbyers
+[mergetool]
+	keepBackup = true
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[push]
+	default = current
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[pull]
+	rebase = true
+	default = current
+[submodule]
+	recurse = true
+[branch]
+	autosetuprebase = always
