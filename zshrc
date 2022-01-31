@@ -109,6 +109,10 @@ then
     alias ea='exa -gla'
 fi
 
+# terraform
+alias tf=terraform
+
+
 # ==============================================================================
 # EDITOR
 # ==============================================================================
@@ -180,8 +184,13 @@ bindkey jj vi-cmd-mode
 # ==============================================================================
 
 # The most magical way to checkout an existing git branch
-function gb () {
+function gb() {
     git checkout $(git branch --sort=-committerdate --format="%(committerdate:short) %(refname:short)" | fzf --reverse | cut -d\  -f2)
+}
+
+# uuid2pb function for representing UUIDs as "json protobuf" i.e. what grpcurl / prototool expects
+function uuid2pb() {
+    python -c 'import uuid; import base64; print("{\"uuid\": \"" + base64.b64encode(uuid.UUID("'"$1"'").bytes).decode("ascii") + "\"}")'
 }
 
 # pprint pretty-prints JSON data in Python
@@ -289,6 +298,7 @@ function pyenv_init(){
   eval "$(pyenv virtualenv-init -)"
 }
 
+
 # ==============================================================================
 # ZSH CONFIG
 # ==============================================================================
@@ -358,6 +368,24 @@ PROMPT='%B%F{magenta}%2~%f%b %F{blue}${vcs_info_msg_0_}%f
 # ==============================================================================
 # Last but not least
 # ==============================================================================
+
+# source aliases, functions, etc. for Oden
+# these files must be added to .gitignore and symlinked to the home directory
+sources=(
+  "${HOME}/.oden_aliases"
+  "${HOME}/.oden_functions"
+)
+
+for f in "${sources[@]}"; do
+  if [ -f "${f}" ]; then
+    # shellcheck disable=SC1090
+    . "${f}"
+  else
+    if [ "${DEBUG}" ]; then
+      echo "*** WARNING: file ${f} does not exist" >&2
+    fi
+  fi
+done
 
 pyenv_init
 

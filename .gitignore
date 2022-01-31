@@ -1,1 +1,5 @@
 .DS_Store
+
+# hide Oden-related tools
+oden_aliases
+oden_functions
