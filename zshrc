@@ -311,13 +311,17 @@ SAVEHIST=1000000
 setopt append_history
 setopt extended_history
 setopt hist_expire_dups_first
-# ignore duplication command history list
+setopt inc_append_history
+
+# Ignore duplication command history list
 setopt hist_ignore_dups 
 setopt hist_ignore_space
 setopt hist_verify
-setopt inc_append_history
-# share command history data
-setopt share_history 
+
+# Don't import commands from the history file during a shell session. Commands
+# from the history file will be loaded on shell startup, but from that point
+# forward only commands in that shell will be added to the local history.
+setopt nosharehistory
 
 # https://superuser.com/questions/479600/how-can-i-prevent-tmux-exiting-with-ctrl-d
 # https://superuser.com/questions/1243138/why-does-ignoreeof-not-work-in-zsh/1309966
