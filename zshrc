@@ -53,8 +53,12 @@ export PATH=$PATH:$HOME/.local/bin
 # Postgres
 export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 
+# FZF Settings
 # Use `bat` for preview in neovim ctrl-p
 export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+# Use `fd` instead of the default `find` command to traverse the file system
+# while respecting .gitignore.
+export FZF_DEFAULT_COMMAND="fd --type f"
 
 # Updates PATH for the Google Cloud SDK.
 source /Users/jackbyers/src/google-cloud-sdk/path.zsh.inc

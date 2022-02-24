@@ -87,3 +87,4 @@ brew "yq"
 brew "htop"
 brew "bat"
 brew "hey"
+brew "fd" # alernative to find

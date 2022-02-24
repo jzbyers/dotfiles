@@ -1,13 +1,15 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" My must have settings
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " Remap leader from / to Space
 let mapleader=" "
 " Remap Esc to jj
 inoremap jj <Esc>
 " Remap Leader-s to Save
 nnoremap <Leader>s :w<CR>
+
+" Copy to system clipboard as well
+set clipboard+=unnamed
+
+" Multiple cursors support
+set multiple-cursors
 
 " Show hybrid line numbers
 set number relativenumber
