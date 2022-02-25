@@ -85,6 +85,6 @@ brew "grep"
 brew "jq"
 brew "yq"
 brew "htop"
-brew "bat"
-brew "hey"
-brew "fd" # alernative to find
+brew "bat" # bat > cat
+brew "hey" # for load testing
+brew "fd" # fd > find 

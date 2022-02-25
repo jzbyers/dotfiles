@@ -109,8 +109,8 @@ alias tn='tmux new-session'
 if command -v exa &> /dev/null
 then
     alias exa='exa --group-directories-first'
-    alias e='exa -gl'
-    alias ea='exa -gla'
+    alias e='exa -l --no-permissions --no-filesize --no-user --no-time'
+    alias ea='exa -la'
 fi
 
 # terraform

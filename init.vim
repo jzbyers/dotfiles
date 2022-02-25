@@ -357,6 +357,7 @@ autocmd FileType go set noexpandtab
 """ sw: number of spaces for autoindent
 autocmd FileType go setlocal ts=4 sts=4 sw=4
 autocmd FileType html setlocal ts=2 sts=2 sw=2
+autocmd FileType css setlocal ts=2 sts=2 sw=2
 autocmd FileType javascript setlocal ts=2 sts=2 sw=2
 autocmd FileType typescript setlocal ts=2 sts=2 sw=2
 autocmd FileType javascriptreact setlocal ts=2 sts=2 sw=2
@@ -430,10 +431,10 @@ nnoremap <Leader>o :copen<cr>
 " Commands 
 " ============================================================================
 
-" BufOnly deletes all the buffers except the current/named buffer. Without any
+" BO deletes all the buffers except the current/named buffer. Without any
 " arguments, the current buffer is kept. With an argument, the buffer
 " name/number supplied is kept.
-command! -nargs=? -complete=buffer -bang BufOnly
+command! -nargs=? -complete=buffer -bang BO
     \ :call BufOnly('<args>', '<bang>')
 
 

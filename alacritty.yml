@@ -13,7 +13,7 @@ scrolling:
 
 
 font:
-  size: 14
+  size: 15
   # OS X only: use thin stroke font rendering. Thin strokes are suitable for
   # retina displays, but for non-retina you probably want to set this to false.
   use_thin_strokes: true
