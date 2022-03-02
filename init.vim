@@ -7,6 +7,9 @@ call plug#begin('~/.config/nvim/plugged')
 " Language Servers:
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Golang:
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 " Fuzzy Finder For File Search:
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
