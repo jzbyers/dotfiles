@@ -378,10 +378,8 @@ PROMPT='%B%F{magenta}%2~%f%b %F{blue}${vcs_info_msg_0_}%f
 # ==============================================================================
 
 # source aliases, functions, etc. for Oden
-# these files must be added to .gitignore and symlinked to the home directory
 sources=(
-  "${HOME}/.oden_aliases"
-  "${HOME}/.oden_functions"
+  "${HOME}/.zshrc_oden"
 )
 
 for f in "${sources[@]}"; do
