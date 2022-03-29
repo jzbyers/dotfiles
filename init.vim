@@ -26,6 +26,9 @@ Plug 'gruvbox-community/gruvbox'
 " Airline:
 Plug 'vim-airline/vim-airline'
 
+" Terraform
+Plug 'hashivim/vim-terraform'
+
 " CSV:
 Plug 'mechatroner/rainbow_csv'
 
@@ -230,6 +233,15 @@ set signcolumn=yes
 lua <<EOF
 require'nvim-treesitter.configs'.setup { highlight = { enable = true }, incremental_selection = { enable = true }, textobjects = { enable = true } }
 EOF
+
+" ======================
+" Terraform:
+" ======================
+" Terraform has a command called terraform fmt which is the canonical format and
+" style for *.tf files.
+let g:terraform_fmt_on_save=1
+" Override the indentation level to 2 spaces
+let g:terraform_align=1
 
 " ============================================================================
 " Neovim Config 
