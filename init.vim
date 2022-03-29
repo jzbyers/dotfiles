@@ -372,6 +372,7 @@ autocmd FileType cpp setlocal ts=2 sts=2 sw=2
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2
 autocmd FileType yml setlocal ts=2 sts=2 sw=2
 autocmd FileType sql setlocal ts=2 sts=2 sw=2
+autocmd FileType tf setlocal ts=2 sts=2 sw=2
 
 " ============================================================================
 " Simple mappings
