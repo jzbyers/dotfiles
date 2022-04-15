@@ -254,8 +254,8 @@ endif
 
 " Set colorscheme (stolen from Michael Paulson)
 fun! ColorScheme()
-    set background=dark
-    colorscheme dracula
+    set background=light
+    colorscheme gruvbox
 
     highlight ColorColumn ctermbg=0 guibg=grey
     highlight SignColumn guibg=none
