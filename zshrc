@@ -75,6 +75,10 @@ export PATH=$PATH:/Users/jackbyers/gcloud
 alias ..='cd ..'
 alias ...='cd ../..'
 
+# Switching architectures
+alias arm="env /usr/bin/arch -arm64 /bin/zsh --login"
+alias intel="env /usr/bin/arch -x86_64 /bin/zsh --login"
+
 # use nvim if it exists
 if command -v nvim 2>&1 >/dev/null; then
   alias vim=nvim
