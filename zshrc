@@ -6,7 +6,9 @@
 export PATH="$PATH:/opt/homebrew/bin"
 
 # Go (using 1.17 currently)
-export PATH=$PATH:$HOME/go/bin
+export PATH="/usr/local/opt/go@1.17/bin:$PATH"
+export GOPATH=$(go env GOPATH)
+export PATH=$PATH:$(go env GOPATH)/bin
 
 # Rust
 export PATH=$PATH:$HOME/.cargo/bin
