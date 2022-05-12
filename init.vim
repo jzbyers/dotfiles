@@ -22,7 +22,6 @@ Plug 'tpope/vim-rhubarb'
 " Themes:
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'gruvbox-community/gruvbox'
-Plug 'phanviet/vim-monokai-pro'
 
 " Airline:
 Plug 'vim-airline/vim-airline'
@@ -256,7 +255,7 @@ endif
 " Set colorscheme (stolen from Michael Paulson)
 fun! ColorScheme()
     set background=dark
-    colorscheme monokai_pro
+    colorscheme dracula
 
     highlight ColorColumn ctermbg=0 guibg=grey
     highlight SignColumn guibg=none
