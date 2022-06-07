@@ -2,13 +2,15 @@
 # ENV
 # ==============================================================================
 
-# Homebrew
+# Homebrew on Apple Silicon
+# Installation instructions: https://docs.brew.sh/Installation
+# /usr/local for Intel/AMD binaries
+# /opt/homebrew for ARM binaries
 export PATH="$PATH:/opt/homebrew/bin"
 
-# Go (using 1.17 currently)
-export PATH="/usr/local/opt/go@1.17/bin:$PATH"
-export GOPATH=$(go env GOPATH)
-export PATH=$PATH:$(go env GOPATH)/bin
+# Go
+# Add installed binaries to PATH
+export PATH="$PATH:$HOME/go/bin"
 
 # Rust
 export PATH=$PATH:$HOME/.cargo/bin

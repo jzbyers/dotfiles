@@ -36,6 +36,9 @@ Plug 'mechatroner/rainbow_csv'
 " Remember to use TSInstall to install parsers for different languages
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
+" Markdown:
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' }
+
 " Initialize plugin system
 call plug#end()
 
@@ -385,6 +388,7 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2
 autocmd FileType yml setlocal ts=2 sts=2 sw=2
 autocmd FileType sql setlocal ts=2 sts=2 sw=2
 autocmd FileType tf setlocal ts=2 sts=2 sw=2
+autocmd FileType proto setlocal ts=2 sts=2 sw=2
 
 " ============================================================================
 " Simple mappings
