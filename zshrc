@@ -105,14 +105,6 @@ alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 # Grep
 alias grep='grep --color=auto'
 
-# Tmux
-# Attaches tmux to the last session, or creates a new session with one window
-alias t='tmux attach || tmux new-session\;'
-# Attaches tmux to a session (example: ta portal)
-alias ta='tmux attach -t'
-# Creates a new session
-alias tn='tmux new-session'
-
 # Use exa for listing files and directories
 if command -v exa &> /dev/null
 then
@@ -194,6 +186,16 @@ bindkey jj vi-cmd-mode
 # ==============================================================================
 # FUNCTIONS
 # ==============================================================================
+
+# Tmux
+# Attaches tmux to the last session, or creates a new session with one window
+function t() { tmux new-session -A -s $1 } 
+# Attaches tmux to a session (example: ta portal)
+function ta() { tmux attach -t $1 }
+# Kills a named session
+function tk() { tmux kill-session -t $1 }
+# Lists sessions
+function tl() { tmux list-sessions }
 
 # The most magical way to checkout an existing git branch
 function gb() {
