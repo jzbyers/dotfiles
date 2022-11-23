@@ -73,6 +73,9 @@ source /Users/jackbyers/src/google-cloud-sdk/completion.zsh.inc
 # executable.
 export PATH=$PATH:/Users/jackbyers/gcloud
 
+# https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
+export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+
 # ==============================================================================
 # ALIAS
 # ==============================================================================
@@ -93,11 +96,12 @@ alias mkdir="mkdir -pv"
 
 # Git
 alias g='git'
-alias gs='g status -s'
+alias gs='g status'
 alias ga='g add .'
 alias gc='g commit'
 alias gp='g push'
 alias gl='g l'
+alias gf='g fetch'
 
 # Search process table (ex. psg zsh)
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
@@ -128,6 +132,7 @@ alias cl='open -na "CLion.app"'
 alias pc='open -na "PyCharm.app"'
 alias ws='open -na "WebStorm.app"'
 alias rd='open -na "Rider.app"'
+alias fl='open -na "Fleet.app"'
 
 # Use brew-installed ctags instead of the version that comes with XCode
 alias ctags="`brew --prefix`/bin/ctags"
@@ -200,6 +205,11 @@ function tl() { tmux list-sessions }
 # The most magical way to checkout an existing git branch
 function gb() {
     git checkout $(git branch --sort=-committerdate --format="%(committerdate:short) %(refname:short)" | fzf --reverse | cut -d\  -f2)
+}
+
+# Run gofmt on changed files
+function ggofmt() {
+    for x in `git status -s|awk '{ print $2}'`; do gofmt -w $x; done
 }
 
 # uuid2pb function for representing UUIDs as "json protobuf" i.e. what grpcurl / prototool expects

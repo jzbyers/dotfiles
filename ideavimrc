@@ -5,6 +5,8 @@ inoremap jj <Esc>
 " Remap Leader-s to Save
 nnoremap <Leader>s :w<CR>
 
+set scrolloff=8
+
 " Copy to system clipboard as well
 set clipboard+=unnamed
 

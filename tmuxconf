@@ -16,14 +16,19 @@ bind C-f last-window
 
 set-option -g default-shell /bin/zsh
 
+# {n}vim compability
+set-option -ga terminal-overrides ",xterm-256color:Tc"
 set -g default-terminal "screen-256color"
+
 setw -g xterm-keys on
 set -s focus-events on
 
-# Reload configuration
-bind r source-file ~/.tmux.conf \; display '~/.tmux.conf sourced'
+# Source file
+unbind r
+bind r source-file ~/.tmux.conf \; display "Reloaded!"
 
-set-option -g history-limit 50000
+# Have a very large history
+set -g history-limit 1000000
 
 # ##############################################################################
 # display
@@ -133,7 +138,7 @@ unbind C-d
 # different layouts).
 bind t select-layout tiled
 
-# Enable scrolling
+# Mouse mode on 
 set -g mouse on
 
 ######## Alacritty + Tmux key integration #########
