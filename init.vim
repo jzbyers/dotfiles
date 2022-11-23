@@ -1,4 +1,4 @@
-set scrolloff=8                 " scroll 8 lines before cursor hits top of bottom
+set scrolloff=8                 " scroll before cursor hits top or bottom
 set number                      " display line numbers
 set relativenumber              " use relative line numbers
 set guicursor=                  " disable cursor styling (use terminal's)
