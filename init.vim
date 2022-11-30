@@ -28,7 +28,7 @@ set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
-
+set maxmempattern=10000         " increase amount of mem used for pattern matching
 
 call plug#begin()
 " Fuzzy Finder For File Search:
@@ -43,20 +43,55 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tpope/vim-fugitive'
 call plug#end()
 
+syntax enable
 set background=dark
 set termguicolors
 colorscheme dracula
-syntax on
+
+" vim-go settings
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+
+augroup filetypedetect
+  command! -nargs=* -complete=help Help vertical belowright help <args>
+  autocmd FileType help wincmd L
+  
+  autocmd BufNewFile,BufRead .tmux.conf*,tmux.conf* setf tmux
+  autocmd BufNewFile,BufRead .nginx.conf*,nginx.conf* setf nginx
+  autocmd BufNewFile,BufRead *.hcl setf conf
+
+  autocmd BufRead,BufNewFile *.gotmpl set filetype=gotexttmpl
+  
+  autocmd BufNewFile,BufRead *.ino setlocal noet ts=4 sw=4 sts=4
+  autocmd BufNewFile,BufRead *.txt setlocal noet ts=4 sw=4
+  autocmd BufNewFile,BufRead *.md setlocal noet ts=4 sw=4
+  autocmd BufNewFile,BufRead *.html setlocal noet ts=4 sw=4
+  autocmd BufNewFile,BufRead *.vim setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd BufNewFile,BufRead *.hcl setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd BufNewFile,BufRead *.sh setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd BufNewFile,BufRead *.proto setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd BufNewFile,BufRead *.fish setlocal expandtab shiftwidth=2 tabstop=2
+  
+  autocmd FileType go setlocal noexpandtab tabstop=4 shiftwidth=4
+  autocmd FileType lua setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd FileType yaml setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd FileType json setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
+augroup END
 
 let mapleader = " "
 inoremap jj <Esc>
 nnoremap <leader>pv :Vex<CR>
 nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
-nnoremap <leader>s :w<CR>
+nnoremap <leader>w :w<CR>
 nnoremap <leader>b <C-^>
 nnoremap <leader>c :noh<CR>
+nnoremap <leader>o :only<CR>
 nnoremap <C-p> :GFiles<CR>
-" Quickfix List remaps:
 nnoremap <C-n> :cnext<CR>
 nnoremap <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>

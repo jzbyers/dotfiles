@@ -207,6 +207,11 @@ function gb() {
     git checkout $(git branch --sort=-committerdate --format="%(committerdate:short) %(refname:short)" | fzf --reverse | cut -d\  -f2)
 }
 
+# Force delete unmerged git branches
+function gclean() {
+    git branch --merged | egrep -v "(^\*|main|master|dev|develop)" | xargs git branch -d
+}
+
 # Run gofmt on changed files
 function ggofmt() {
     for x in `git status -s|awk '{ print $2}'`; do gofmt -w $x; done
