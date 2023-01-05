@@ -75,6 +75,7 @@ augroup filetypedetect
   autocmd BufNewFile,BufRead *.sh setlocal expandtab shiftwidth=2 tabstop=2
   autocmd BufNewFile,BufRead *.proto setlocal expandtab shiftwidth=2 tabstop=2
   autocmd BufNewFile,BufRead *.fish setlocal expandtab shiftwidth=2 tabstop=2
+  autocmd BufNewFile,BufRead *.sql setlocal expandtab shiftwidth=2 tabstop=2
   
   autocmd FileType go setlocal noexpandtab tabstop=4 shiftwidth=4
   autocmd FileType lua setlocal expandtab shiftwidth=2 tabstop=2
@@ -91,7 +92,7 @@ nnoremap <leader>w :w<CR>
 nnoremap <leader>b <C-^>
 nnoremap <leader>c :noh<CR>
 nnoremap <leader>o :only<CR>
-nnoremap <C-p> :GFiles<CR>
+nnoremap <C-p> :Files<CR>
 nnoremap <C-n> :cnext<CR>
 nnoremap <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
