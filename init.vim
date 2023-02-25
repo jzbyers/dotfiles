@@ -105,3 +105,16 @@ fun! s:create_go_doc_comment()
 endfunction
 nnoremap <leader>d :<C-u>call <SID>create_go_doc_comment()<CR>
 
+" Configure F8 to run SyntasticToggle, which toggles the location list.
+map <F8> <ESC>:call SyntasticToggle()<CR>
+
+let g:syntastic_is_open = 0  
+function! SyntasticToggle()
+if g:syntastic_is_open == 1
+    lclose
+    let g:syntastic_is_open = 0 
+else
+    let g:syntastic_is_open = 1 
+endif
+endfunction
+" End section: reference: https://github.com/vim-syntastic/syntastic/issues/166

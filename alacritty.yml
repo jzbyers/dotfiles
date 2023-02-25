@@ -26,16 +26,17 @@ scrolling:
 
 
 font:
-  size: 15
+  size: 14
   # OS X only: use thin stroke font rendering. Thin strokes are suitable for
   # retina displays, but for non-retina you probably want to set this to false.
   use_thin_strokes: true
 
+  # InconsolataGo, iosevka
   normal:
-    family: InconsolataGo 
+    family: InconsolataGo
     style: Regular
   bold:
-    family: InconsolataGo 
+    family: InconsolataGo
     style: Bold
   italic:
     family: InconsolataGo

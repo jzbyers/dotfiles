@@ -9,6 +9,9 @@
 export PATH="$PATH:/opt/homebrew/bin"
 
 # Go
+# Go version
+export GOROOT="/Users/jackbyers/sdk/go1.18.9"
+export PATH=$PATH:$GOROOT/bin
 # Add installed binaries to PATH
 export PATH="$PATH:$HOME/go/bin"
 
