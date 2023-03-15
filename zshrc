@@ -1,83 +1,68 @@
-# ==============================================================================
-# ENV
-# ==============================================================================
+# # ==============================================================================
+# # ENV
+# # ==============================================================================
 
-# Homebrew on Apple Silicon
-# Installation instructions: https://docs.brew.sh/Installation
-# /usr/local for Intel/AMD binaries
-# /opt/homebrew for ARM binaries
-export PATH="$PATH:/opt/homebrew/bin"
+# # Homebrew on Apple Silicon
+# # Installation instructions: https://docs.brew.sh/Installation
+# # /usr/local for Intel/AMD binaries
+# # /opt/homebrew for ARM binaries
+# export PATH="$PATH:/opt/homebrew/bin"
 
-# Go
-# Go version
-export GOROOT="/Users/jackbyers/sdk/go1.18.9"
-export PATH=$PATH:$GOROOT/bin
-# Add installed binaries to PATH
-export PATH="$PATH:$HOME/go/bin"
+# # Go
+# # Go version
+# export GOROOT="/Users/jackbyers/sdk/go1.18.9"
+# export PATH=$PATH:$GOROOT/bin
+# # Add installed binaries to PATH
+# export PATH="$PATH:$HOME/go/bin"
 
 # Rust
 export PATH=$PATH:$HOME/.cargo/bin
 
-# Java
-if command -v jenv &> /dev/null
-then
-  eval "$(jenv init -)"
-fi
+# # Java
+# if command -v jenv &> /dev/null
+# then
+#   eval "$(jenv init -)"
+# fi
 
 # VSCode
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
-# Node
-export NVM_DIR="$HOME/.nvm"
-# load nvm
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
-# load nvm bash completion
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
+# # Node
+# export NVM_DIR="$HOME/.nvm"
+# # load nvm
+# [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
+# # load nvm bash completion
+# [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
 
 # Vim
 export VISUAL="vim"
 export EDITOR="vim"
 export PATH="$PATH:/Users/jackbyers/src/neovim/build/bin"
 
-# Python
-# Enable pyenv and pyenv-virtualenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init --path)"
-fi
-export PYTHON_2_VERSION="2.7.16"
-export PYTHON_3_VERSION="3.7.4"
-export CLOUDSDK_PYTHON=python3
-# Disable prompt change, which is being deprecated by pyenv-virtualenv
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-# Add poetry
-export PATH="$HOME/.poetry/bin:$PATH"
+# # Local Tools, like Python's black formatter and Rust's analyzer
+# export PATH=$PATH:$HOME/.local/bin
 
-# Local Tools, like Python's black formatter and Rust's analyzer
-export PATH=$PATH:$HOME/.local/bin
-
-# Postgres
-export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+# # Postgres
+# export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 
 # FZF Settings
 # Use `bat` for preview in neovim ctrl-p
-export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+#export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
 # Use `fd` instead of the default `find` command to traverse the file system
 # while respecting .gitignore.
 export FZF_DEFAULT_COMMAND="fd --type f"
 
-# Updates PATH for the Google Cloud SDK.
-source /Users/jackbyers/src/google-cloud-sdk/path.zsh.inc
-# Enables zsh completion for gcloud.
-source /Users/jackbyers/src/google-cloud-sdk/completion.zsh.inc
+# # Updates PATH for the Google Cloud SDK.
+# source /Users/jackbyers/src/google-cloud-sdk/path.zsh.inc
+# # Enables zsh completion for gcloud.
+# source /Users/jackbyers/src/google-cloud-sdk/completion.zsh.inc
 
-# Add Google Cloud SQL Proxy to path. The gcloud directory contains the
-# executable.
-export PATH=$PATH:/Users/jackbyers/gcloud
+# # Add Google Cloud SQL Proxy to path. The gcloud directory contains the
+# # executable.
+# export PATH=$PATH:/Users/jackbyers/gcloud
 
-# https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
-export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+# # https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
+# export USE_GKE_GCLOUD_AUTH_PLUGIN=True
 
 # ==============================================================================
 # ALIAS
@@ -136,6 +121,7 @@ alias pc='open -na "PyCharm.app"'
 alias ws='open -na "WebStorm.app"'
 alias rd='open -na "Rider.app"'
 alias fl='open -na "Fleet.app"'
+alias as='open -na "Android Studio.app"'
 
 # Use brew-installed ctags instead of the version that comes with XCode
 alias ctags="`brew --prefix`/bin/ctags"
@@ -243,93 +229,6 @@ function h() {
     fi
 }
 
-# Helpful logging function (info, warn, error, fatal)
-function log(){
-    local level msg hl
-    level="$(tr '[:lower:]' '[:upper:]' <<< "${@:1:1}")"
-    msg=("${@:2}")
-    case "${level}" in
-        FATAL|ERR*) hl="%F{red}" ;;
-        WARN*) hl="%F{yellow}" ;;
-        DEBUG) hl="%F{cyan}" ;;
-    esac
-    print -P "${hl}*** ${level}: ${msg[*]}%f" 1>&2
-    if [[ "${level}" == "FATAL" ]]; then
-        # return rather than exit in interactive mode
-        if [[ "${-}" =~ 'i' ]] ; then return 1; else exit 1; fi
-    fi
-}
-
-# Functions for Python virtual env management
-
-function check_dev_env(){
-  if ! type -p python3 >/dev/null; then
-    log fatal "python3 not installed. Maybe try 'brew install python'?"
-  fi
-  if ! type -p virtualenv >/dev/null; then
-    log fatal "virtualenv not installed. Maybe try 'pip install virtualenv'?"
-  fi
-}
-
-function setup_venv(){
-  SOURCE_VERSION="$1"
-  VENV_NAME="$2"
-  check_dev_env
-  if ! [ -d "${PYENV_ROOT}/versions/${SOURCE_VERSION}" ]; then
-    log warning "Python version ${SOURCE_VERSION} is not yet installed; installing..."
-    pyenv install "${SOURCE_VERSION}"
-  fi
-  if ! [ -f "${PYENV_ROOT}/versions/${VENV_NAME}/bin/activate" ]; then
-    log info "Setting up python2 environment"
-    pyenv virtualenv "${SOURCE_VERSION}" "${VENV_NAME}"
-  fi
-}
-
-function py2(){
-  if [ "${VIRTUAL_ENV}" ]; then
-    source deactivate || deactivate
-  fi
-  if ! [ -d "${PYENV_ROOT}/versions/${PYTHON_2_VERSION}/envs/py2" ]; then
-    setup_venv "${PYTHON_2_VERSION}" py2
-  fi
-  log info "Switching python environment to python "${PYTHON_2_VERSION}" (${PYENV_ROOT}/versions/py2)"
-  pyenv activate py2
-}
-
-function py3(){
-  if command -pv deactivate >/dev/null; then
-    source deactivate || deactivate
-  fi
-  if ! [ -d "${PYENV_ROOT}/versions/${PYTHON_3_VERSION}/envs/py3" ]; then
-    setup_venv "${PYTHON_3_VERSION}" py3
-  fi
-  log info "Switching python environment to python "${PYTHON_3_VERSION}" (${PYENV_ROOT}/versions/py3)"
-  pyenv activate py3
-}
-
-function ensure_venv(){
-  setup_venv "${PYTHON_2_VERSION}" py2
-  setup_venv "${PYTHON_3_VERSION}" py3
-}
-
-function repy(){
-  if [ "$1" = "--nuke" ]; then
-    rm -rf "${PYENV_ROOT}"
-    pyenv_init
-  fi
-  log info "resetting python virtualenvs"
-  rm -rf "${PYENV_ROOT}/versions/py2"
-  rm -rf "${PYENV_ROOT}/versions/${PYTHON_2_VERSION}/envs/py2"
-  rm -rf "${PYENV_ROOT}/versions/py3"
-  rm -rf "${PYENV_ROOT}/versions/${PYTHON_3_VERSION}/envs/py3"
-  ensure_venv
-}
-
-function pyenv_init(){
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
-}
-
 
 # ==============================================================================
 # ZSH CONFIG
@@ -401,25 +300,25 @@ setopt PROMPT_SUBST
 PROMPT='%B%F{magenta}%2~%f%b %F{blue}${vcs_info_msg_0_}%f
 '$'\U25CF'' '
 
-# ==============================================================================
-# Last but not least
-# ==============================================================================
+# # ==============================================================================
+# # Last but not least
+# # ==============================================================================
 
-# source aliases, functions, etc. for Oden
-sources=(
-  "${HOME}/.zshrc_oden"
-)
+# # source aliases, functions, etc. for Oden
+# sources=(
+#   "${HOME}/.zshrc_oden"
+# )
 
-for f in "${sources[@]}"; do
-  if [ -f "${f}" ]; then
-    # shellcheck disable=SC1090
-    . "${f}"
-  else
-    if [ "${DEBUG}" ]; then
-      echo "*** WARNING: file ${f} does not exist" >&2
-    fi
-  fi
-done
+# for f in "${sources[@]}"; do
+#   if [ -f "${f}" ]; then
+#     # shellcheck disable=SC1090
+#     . "${f}"
+#   else
+#     if [ "${DEBUG}" ]; then
+#       echo "*** WARNING: file ${f} does not exist" >&2
+#     fi
+#   fi
+# done
 
-pyenv_init
+# pyenv_init
 
