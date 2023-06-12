@@ -96,6 +96,8 @@ nnoremap <C-p> :Files<CR>
 nnoremap <C-n> :cnext<CR>
 nnoremap <C-m> :cprevious<CR>
 nnoremap <leader>a :cclose<CR>
+nnoremap <C-e> 5<C-e>
+nnoremap <C-y> 5<C-y>
 
 " Create a Go doc comment based on the word under the cursor
 fun! s:create_go_doc_comment()

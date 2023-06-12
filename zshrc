@@ -229,6 +229,10 @@ function h() {
     fi
 }
 
+# Get logs from Kubernetes pod
+function klog() {
+    k logs $(k get pods | grep $1 |  head -n 1 | awk '{print $1;}') $1
+}
 
 # ==============================================================================
 # ZSH CONFIG
@@ -321,4 +325,5 @@ PROMPT='%B%F{magenta}%2~%f%b %F{blue}${vcs_info_msg_0_}%f
 # done
 
 # pyenv_init
+
 
