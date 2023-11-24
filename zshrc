@@ -38,8 +38,8 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 # [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"
 
 # Vim
-export VISUAL="vim"
-export EDITOR="vim"
+export VISUAL="nvim"
+export EDITOR="nvim"
 export PATH="$PATH:/Users/jackbyers/src/neovim/build/bin"
 
 # # Local Tools, like Python's black formatter and Rust's analyzer
@@ -85,6 +85,9 @@ fi
 # Make directory and parent directories
 alias mkdir="mkdir -pv"
 
+# Neovim instead of vim
+alias vim="nvim"
+
 # Git
 alias g='git'
 alias gs='g status'
@@ -94,11 +97,12 @@ alias gp='g push'
 alias gl='g l'
 alias gf='g fetch'
 
+alias ls="ls --color=auto"
+alias grep='grep --color=auto'
+alias ssh="TERM=xterm-256color ssh"
+
 # Search process table (ex. psg zsh)
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
-
-# Grep
-alias grep='grep --color=auto'
 
 # Use exa for listing files and directories
 if command -v exa &> /dev/null
