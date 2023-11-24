@@ -21,14 +21,15 @@ set updatetime=300
 set pumheight=10                " completion window max size
 set conceallevel=2              " concealed text is completely hidden
 set cursorline                  " horizontal line where cursor is located
-set textwidth=80
-set colorcolumn=+1              " vertical line at textwidth
 set hidden
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
 set maxmempattern=10000         " increase amount of mem used for pattern matching
+
+" Yank to system clipboard
+set clipboard+=unnamedplus
 
 call plug#begin()
 " Fuzzy Finder For File Search:
@@ -41,6 +42,8 @@ Plug 'gruvbox-community/gruvbox'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Git:
 Plug 'tpope/vim-fugitive'
+" Copilot
+" Plug 'github/copilot.vim'
 call plug#end()
 
 syntax enable

@@ -15,6 +15,9 @@
 # # Add installed binaries to PATH
 # export PATH="$PATH:$HOME/go/bin"
 
+# Alacritty CLI
+export PATH="$PATH:/Users/jackbyers/src/alacritty/target/release/osx/Alacritty.app/Contents/MacOS"
+
 # Rust
 export PATH=$PATH:$HOME/.cargo/bin
 

@@ -22,7 +22,6 @@ set expandtab
 
 set ai "Auto indent
 set si "Smart indent
-set wrap "Wrap lines
 
 " Enable vim paragraph motion
 set vim-paragraph-motion
@@ -39,8 +38,6 @@ set expandtab " tabs are spaces
 set shiftround " round indent to a multiple of `shiftwidth`
 set nowrap
 set nolinebreak
-set textwidth=0
-set wrapmargin=0
 set visualbell
 set noerrorbells
 
