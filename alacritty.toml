@@ -198,6 +198,7 @@ history = 100000
 [window]
 opacity = 1.0
 dynamic_padding = true
+decorations = "buttonless"
 
 [window.padding]
 x = 4
