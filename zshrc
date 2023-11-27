@@ -241,6 +241,23 @@ function klog() {
     k logs $(k get pods | grep $1 |  head -n 1 | awk '{print $1;}') $1
 }
 
+# Set up directory marking commands.
+# See: http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
+# And: https://news.ycombinator.com/item?id=6229001
+export MARKPATH=$HOME/.marks
+function goto {
+    cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
+}
+function mark {
+    mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
+}
+function unmark {
+    rm -i "$MARKPATH/$1"
+}
+function marks {
+    \ls -l "$MARKPATH" | tail -n +2 | sed 's/  / /g' | cut -d' ' -f9- | awk -F ' -> ' '{printf "%-10s -> %s\n", $1, $2}'
+}
+
 # ==============================================================================
 # ZSH CONFIG
 # ==============================================================================
