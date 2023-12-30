@@ -21,6 +21,9 @@ export PATH="$PATH:/Users/jackbyers/src/alacritty/target/release/osx/Alacritty.a
 # Rust
 export PATH=$PATH:$HOME/.cargo/bin
 
+# Ruby
+export PATH="$PATH:/Library/Ruby/Gems/2.6.0"
+
 # # Java
 # if command -v jenv &> /dev/null
 # then

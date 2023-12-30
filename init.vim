@@ -43,6 +43,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Git:
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 " Copilot
 " Plug 'github/copilot.vim'
 call plug#end()
@@ -50,7 +51,7 @@ call plug#end()
 syntax enable
 set background=dark
 set termguicolors
-colorscheme dracula
+colorscheme gruvbox
 
 " vim-go settings
 let g:go_highlight_types = 1

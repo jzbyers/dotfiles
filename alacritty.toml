@@ -1,35 +1,69 @@
 [colors]
 draw_bold_text_with_bright_colors = true
 
+## Dracula
+#[colors.primary]
+#background = "0x282a36"
+#foreground = "0xf8f8f2"
+#
+#[colors.normal]
+#black = "0x000000"
+#blue = "0xbd93f9"
+#cyan = "0x8be9fd"
+#green = "0x50fa7b"
+#magenta = "0xff79c6"
+#red = "0xff5555"
+#white = "0xbfbfbf"
+#yellow = "0xf1fa8c"
+#
+#[colors.bright]
+#black = "0x4d4d4d"
+#blue = "0xcaa9fa"
+#cyan = "0x9aedfe"
+#green = "0x5af78e"
+#magenta = "0xff92d0"
+#red = "0xff6e67"
+#white = "0xe6e6e6"
+#yellow = "0xf4f99d"
+#
+#[colors.dim]
+#black = "0x14151b"
+#blue = "0x4d5b86"
+#cyan = "0x59dffc"
+#green = "0x1ef956"
+#magenta = "0xff46b0"
+#red = "0xff2222"
+#white = "0xe6e6d1"
+#yellow = "0xebf85b"
+
+# Colors (Gruvbox Material Medium Dark)
+
+# Default colors
+[colors.primary]
+background = '#282828'
+foreground = '#d4be98'
+
+# Normal colors
 [colors.normal]
-black = "0x000000"
-blue = "0xbd93f9"
-cyan = "0x8be9fd"
-green = "0x50fa7b"
-magenta = "0xff79c6"
-red = "0xff5555"
-white = "0xbfbfbf"
-yellow = "0xf1fa8c"
+black   = '#3c3836'
+red     = '#ea6962'
+green   = '#a9b665'
+yellow  = '#d8a657'
+blue    = '#7daea3'
+magenta = '#d3869b'
+cyan    = '#89b482'
+white   = '#d4be98'
 
+# Bright colors (same as normal colors)
 [colors.bright]
-black = "0x4d4d4d"
-blue = "0xcaa9fa"
-cyan = "0x9aedfe"
-green = "0x5af78e"
-magenta = "0xff92d0"
-red = "0xff6e67"
-white = "0xe6e6e6"
-yellow = "0xf4f99d"
-
-[colors.dim]
-black = "0x14151b"
-blue = "0x4d5b86"
-cyan = "0x59dffc"
-green = "0x1ef956"
-magenta = "0xff46b0"
-red = "0xff2222"
-white = "0xe6e6d1"
-yellow = "0xebf85b"
+black   = '#3c3836'
+red     = '#ea6962'
+green   = '#a9b665'
+yellow  = '#d8a657'
+blue    = '#7daea3'
+magenta = '#d3869b'
+cyan    = '#89b482'
+white   = '#d4be98'
 
 [colors.cursor]
 cursor = "CellForeground"
@@ -38,10 +72,6 @@ text = "CellBackground"
 [colors.line_indicator]
 background = "None"
 foreground = "None"
-
-[colors.primary]
-background = "0x282a36"
-foreground = "0xf8f8f2"
 
 [colors.search.focused_match]
 background = "0xffb86c"
