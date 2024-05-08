@@ -39,6 +39,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'gruvbox-community/gruvbox'
 Plug 'vim-airline/vim-airline'
+Plug 'folke/tokyonight.nvim'
 " Golang:
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Git:
@@ -51,7 +52,7 @@ call plug#end()
 syntax enable
 set background=dark
 set termguicolors
-colorscheme gruvbox
+colorscheme tokyonight
 
 " vim-go settings
 let g:go_highlight_types = 1

@@ -8,13 +8,6 @@
 # # /opt/homebrew for ARM binaries
 # export PATH="$PATH:/opt/homebrew/bin"
 
-# # Go
-# # Go version
-# export GOROOT="/Users/jackbyers/sdk/go1.18.9"
-# export PATH=$PATH:$GOROOT/bin
-# # Add installed binaries to PATH
-# export PATH="$PATH:$HOME/go/bin"
-
 # Alacritty CLI
 export PATH="$PATH:/Users/jackbyers/src/alacritty/target/release/osx/Alacritty.app/Contents/MacOS"
 
@@ -23,6 +16,9 @@ export PATH=$PATH:$HOME/.cargo/bin
 
 # Ruby
 export PATH="$PATH:/Library/Ruby/Gems/2.6.0"
+
+# Python Poetry
+export PATH="/Users/jackbyers/.local/bin:$PATH"
 
 # # Java
 # if command -v jenv &> /dev/null
