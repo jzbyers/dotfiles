@@ -1,80 +1,98 @@
 [colors]
 draw_bold_text_with_bright_colors = true
 
-[colors.bright]
-black = "0x4d4d4d"
-blue = "0xcaa9fa"
-cyan = "0x9aedfe"
-green = "0x5af78e"
-magenta = "0xff92d0"
-red = "0xff6e67"
-white = "0xe6e6e6"
-yellow = "0xf4f99d"
+[colors.primary]
+background = "#24273a"
+foreground = "#cad3f5"
+dim_foreground = "#8087a2"
+bright_foreground = "#cad3f5"
 
 [colors.cursor]
-cursor = "CellForeground"
-text = "CellBackground"
-
-[colors.dim]
-black = "0x14151b"
-blue = "0x4d5b86"
-cyan = "0x59dffc"
-green = "0x1ef956"
-magenta = "0xff46b0"
-red = "0xff2222"
-white = "0xe6e6d1"
-yellow = "0xebf85b"
-
-[colors.line_indicator]
-background = "None"
-foreground = "None"
-
-[colors.normal]
-black = "0x000000"
-blue = "0xbd93f9"
-cyan = "0x8be9fd"
-green = "0x50fa7b"
-magenta = "0xff79c6"
-red = "0xff5555"
-white = "0xbfbfbf"
-yellow = "0xf1fa8c"
-
-[colors.primary]
-background = "0x282a36"
-foreground = "0xf8f8f2"
-
-[colors.search.focused_match]
-background = "0xffb86c"
-foreground = "0x44475a"
-
-[colors.search.matches]
-background = "0x50fa7b"
-foreground = "0x44475a"
-
-[colors.selection]
-background = "0x44475a"
-text = "CellForeground"
+text = "#24273a"
+cursor = "#f4dbd6"
 
 [colors.vi_mode_cursor]
-cursor = "CellForeground"
-text = "CellBackground"
+text = "#24273a"
+cursor = "#b7bdf8"
+
+[colors.search.matches]
+foreground = "#24273a"
+background = "#a5adcb"
+
+[colors.search.focused_match]
+foreground = "#24273a"
+background = "#a6da95"
+
+[colors.footer_bar]
+foreground = "#24273a"
+background = "#a5adcb"
+
+[colors.hints.start]
+foreground = "#24273a"
+background = "#eed49f"
+
+[colors.hints.end]
+foreground = "#24273a"
+background = "#a5adcb"
+
+[colors.selection]
+text = "#24273a"
+background = "#f4dbd6"
+
+[colors.normal]
+black = "#494d64"
+red = "#ed8796"
+green = "#a6da95"
+yellow = "#eed49f"
+blue = "#8aadf4"
+magenta = "#f5bde6"
+cyan = "#8bd5ca"
+white = "#b8c0e0"
+
+[colors.bright]
+black = "#5b6078"
+red = "#ed8796"
+green = "#a6da95"
+yellow = "#eed49f"
+blue = "#8aadf4"
+magenta = "#f5bde6"
+cyan = "#8bd5ca"
+white = "#a5adcb"
+
+[colors.dim]
+black = "#494d64"
+red = "#ed8796"
+green = "#a6da95"
+yellow = "#eed49f"
+blue = "#8aadf4"
+magenta = "#f5bde6"
+cyan = "#8bd5ca"
+white = "#b8c0e0"
+
+[[colors.indexed_colors]]
+index = 16
+color = "#f5a97f"
+
+[[colors.indexed_colors]]
+index = 17
+color = "#f4dbd6"
 
 [env]
 TERM = "xterm-256color"
 
 [font]
-size = 18
+size = 14
 
 [font.bold]
-family = "InconsolataGo"
+family = "Iosevka Term"
 style = "Bold"
 
 [font.italic]
-family = "InconsolataGo"
+family = "Iosevka Term"
 style = "Regular"
 
 [font.normal]
-family = "InconsolataGo"
+family = "Iosevka Term"
 style = "Regular"
 
 [[keyboard.bindings]]
@@ -199,4 +217,4 @@ history = 100000
 decorations = "Buttonless"
 padding = { x = 3, y = 3 }
 dynamic_padding = true
-opacity = 0.75
+opacity = 1.0
