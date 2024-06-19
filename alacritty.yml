@@ -33,13 +33,13 @@ font:
 
   # InconsolataGo, iosevka
   normal:
-    family: iosevka
+    family: InconsolataGo
     style: Regular
   bold:
-    family: iosevka
+    family: InconsolataGo
     style: Bold
   italic:
-    family: iosevka
+    family: InconsolataGo
     style: Regular
 
 mouse:

@@ -1,21 +1,6 @@
 [colors]
 draw_bold_text_with_bright_colors = true
 
-# Dracula
-[colors.primary]
-background = "0x282a36"
-foreground = "0xf8f8f2"
-
-[colors.normal]
-black = "0x000000"
-blue = "0xbd93f9"
-cyan = "0x8be9fd"
-green = "0x50fa7b"
-magenta = "0xff79c6"
-red = "0xff5555"
-white = "0xbfbfbf"
-yellow = "0xf1fa8c"
-
 [colors.bright]
 black = "0x4d4d4d"
 blue = "0xcaa9fa"
@@ -25,6 +10,10 @@ magenta = "0xff92d0"
 red = "0xff6e67"
 white = "0xe6e6e6"
 yellow = "0xf4f99d"
+
+[colors.cursor]
+cursor = "CellForeground"
+text = "CellBackground"
 
 [colors.dim]
 black = "0x14151b"
@@ -36,64 +25,45 @@ red = "0xff2222"
 white = "0xe6e6d1"
 yellow = "0xebf85b"
 
-# Colors (Gruvbox Material Medium Dark)
+[colors.line_indicator]
+background = "None"
+foreground = "None"
 
-## Default colors
-#[colors.primary]
-#background = '#282828'
-#foreground = '#d4be98'
-#
-## Normal colors
-#[colors.normal]
-#black   = '#3c3836'
-#red     = '#ea6962'
-#green   = '#a9b665'
-#yellow  = '#d8a657'
-#blue    = '#7daea3'
-#magenta = '#d3869b'
-#cyan    = '#89b482'
-#white   = '#d4be98'
-#
-## Bright colors (same as normal colors)
-#[colors.bright]
-#black   = '#3c3836'
-#red     = '#ea6962'
-#green   = '#a9b665'
-#yellow  = '#d8a657'
-#blue    = '#7daea3'
-#magenta = '#d3869b'
-#cyan    = '#89b482'
-#white   = '#d4be98'
-#
-#[colors.cursor]
-#cursor = "CellForeground"
-#text = "CellBackground"
-#
-#[colors.line_indicator]
-#background = "None"
-#foreground = "None"
-#
-#[colors.search.focused_match]
-#background = "0xffb86c"
-#foreground = "0x44475a"
-#
-#[colors.search.matches]
-#background = "0x50fa7b"
-#foreground = "0x44475a"
-#
-#[colors.selection]
-#background = "0x44475a"
-#text = "CellForeground"
-#
-#[colors.vi_mode_cursor]
-#cursor = "CellForeground"
-#text = "CellBackground"
+[colors.normal]
+black = "0x000000"
+blue = "0xbd93f9"
+cyan = "0x8be9fd"
+green = "0x50fa7b"
+magenta = "0xff79c6"
+red = "0xff5555"
+white = "0xbfbfbf"
+yellow = "0xf1fa8c"
+
+[colors.primary]
+background = "0x282a36"
+foreground = "0xf8f8f2"
+
+[colors.search.focused_match]
+background = "0xffb86c"
+foreground = "0x44475a"
+
+[colors.search.matches]
+background = "0x50fa7b"
+foreground = "0x44475a"
+
+[colors.selection]
+background = "0x44475a"
+text = "CellForeground"
+
+[colors.vi_mode_cursor]
+cursor = "CellForeground"
+text = "CellBackground"
 
 [env]
 TERM = "xterm-256color"
 
 [font]
-size = 14
+size = 18
 
 [font.bold]
 family = "InconsolataGo"
@@ -226,11 +196,7 @@ mods = "Command"
 history = 100000
 
 [window]
-opacity = 1.0
+decorations = "Buttonless"
+padding = { x = 3, y = 3 }
 dynamic_padding = true
-decorations = "buttonless"
-
-[window.padding]
-x = 4
-y = 4
-
+opacity = 0.75

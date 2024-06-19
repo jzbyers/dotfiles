@@ -96,7 +96,6 @@ alias gp='g push'
 alias gl='g l'
 alias gf='g fetch'
 
-alias ls="ls --color=auto"
 alias grep='grep --color=auto'
 alias ssh="TERM=xterm-256color ssh"
 
@@ -104,12 +103,7 @@ alias ssh="TERM=xterm-256color ssh"
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 
 # Use exa for listing files and directories
-if command -v exa &> /dev/null
-then
-    alias exa='exa --group-directories-first'
-    alias e='exa -l --no-permissions --no-filesize --no-user --no-time'
-    alias ea='exa -la'
-fi
+alias ls='exa --color=always --long --git --no-icons --no-time --no-user --no-permissions --group-directories-first'
 
 # terraform
 alias tf=terraform
@@ -348,5 +342,4 @@ PROMPT='%B%F{magenta}%2~%f%b %F{blue}${vcs_info_msg_0_}%f
 # done
 
 # pyenv_init
-
 

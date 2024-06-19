@@ -27,6 +27,7 @@ set shiftwidth=4
 set expandtab
 set smartindent
 set maxmempattern=10000         " increase amount of mem used for pattern matching
+set colorcolumn=81,101
 
 " Yank to system clipboard
 set clipboard+=unnamedplus
@@ -37,14 +38,7 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 " Appearance:
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'gruvbox-community/gruvbox'
 Plug 'vim-airline/vim-airline'
-Plug 'folke/tokyonight.nvim'
-" Golang:
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Git:
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
 " Copilot
 " Plug 'github/copilot.vim'
 call plug#end()
@@ -52,7 +46,19 @@ call plug#end()
 syntax enable
 set background=dark
 set termguicolors
-colorscheme tokyonight
+colorscheme dracula
+
+" Transparent background
+highlight Normal guibg=none
+highlight NonText guibg=none
+highlight Normal ctermbg=none
+highlight NonText ctermbg=none
+
+" Fuzzy Finder for File Search settings
+" Initialize configuration dictionary
+let g:fzf_vim = {}
+" Empty value to disable preview window altogether
+let g:fzf_preview_window = []
 
 " vim-go settings
 let g:go_highlight_types = 1
