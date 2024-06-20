@@ -20,7 +20,14 @@ require("lazy").setup({
 		'Mofiqul/dracula.nvim',
 		priority = 1000,
 	},
-    { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+    { 
+        "catppuccin/nvim", 
+        name = "catppuccin", 
+        priority = 1000,
+        opts = {
+            transparent_background = true,
+        }
+    },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",

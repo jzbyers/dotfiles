@@ -217,4 +217,4 @@ history = 100000
 decorations = "Buttonless"
 padding = { x = 3, y = 3 }
 dynamic_padding = true
-opacity = 1.0
+opacity = 0.85
