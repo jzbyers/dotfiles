@@ -33,6 +33,9 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- FormatGo
 vim.keymap.set('n', '<leader>f', ':lua vim.lsp.buf.format()<CR>', {noremap = true, silent = true})
 
+-- Jump to last file in buffer
+vim.keymap.set("n", "<leader>b", "<cmd>e#<CR>")
+
 -- Switching between splits
 vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', {silent = true})
 vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', {silent = true})
@@ -40,7 +43,7 @@ vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {silent = true})
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {silent = true})
 
 -- Quickly peak at Git blame
-vim.keymap.set("n", "<leader>gb", "<cmd>Git blame<CRe")
+vim.keymap.set("n", "<leader>gb", "<cmd>Git blame<CR>")
 
 -- Quick save
 vim.keymap.set("n", "<leader>w", "<cmd>w<CR>")
