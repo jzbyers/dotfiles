@@ -57,6 +57,18 @@ require("lazy").setup({
     -- Auto-create pairs like parens, quotes, etc.
     "jiangmiao/auto-pairs",
 
+    -- The best plugin ever?
+    {
+        "kylechui/nvim-surround",
+        version = "*", -- Use for stability; omit to use `main` branch for the latest features
+        event = "VeryLazy",
+        config = function()
+            require("nvim-surround").setup({
+                -- Configuration here, or leave empty to use defaults
+            })
+        end
+    },
+
     -- LSP config
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
@@ -70,9 +82,6 @@ require("lazy").setup({
     -- Copilot
     "github/copilot.vim",
 
-    -- Database
-    "tpope/vim-dadbod",
-    "kristijanhusak/vim-dadbod-ui"
 }, {})
 
 -- Not sure if this should go here or elsewhere...
