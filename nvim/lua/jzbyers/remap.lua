@@ -42,8 +42,13 @@ vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', {silent = true})
 vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {silent = true})
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {silent = true})
 
--- Quickly peak at Git blame
+-- Make Git fugitive easier to use
 vim.keymap.set("n", "<leader>gb", "<cmd>Git blame<CR>")
+vim.keymap.set("n", "<leader>gd", ":Gdiff<cr>", {silent = true})
+
+-- Toggle Copilot
+vim.keymap.set("n", "<leader>cd", ":Copilot disable<CR>")
+vim.keymap.set("n", "<leader>ce", ":Copilot enable<CR>")
 
 -- Quick save
 vim.keymap.set("n", "<leader>w", "<cmd>w<CR>")
