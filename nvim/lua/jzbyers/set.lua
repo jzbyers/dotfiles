@@ -34,10 +34,6 @@ vim.opt.inccommand = "split"
 
 vim.opt.undofile = true
 
-vim.g.netrw_browse_split = 4
-vim.g.netrw_liststyle = 3
-vim.g.netrw_winsize = -28
-
 local keyset = vim.keymap.set
 keyset("n", "<down>", ":resize +1<cr>")
 keyset("n", "<up>", ":resize -1<cr>")
