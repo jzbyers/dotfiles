@@ -4,7 +4,8 @@ require("mason-lspconfig").setup({
         "lua_ls",
         "gopls",
         "sqls",
-        "ruff"
+        "ruff",
+        "tsserver"
     }
 })
 
@@ -33,6 +34,11 @@ require("lspconfig").gopls.setup {
 }
 
 require("lspconfig").ruff.setup {
+    on_attach = on_attach,
+    capabilities = capabilities
+}
+
+require("lspconfig").tsserver.setup {
     on_attach = on_attach,
     capabilities = capabilities
 }
