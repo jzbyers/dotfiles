@@ -84,15 +84,15 @@ TERM = "xterm-256color"
 size = 14
 
 [font.bold]
-family = "Iosevka Term"
+family = "Iosevka Nerd Font"
 style = "Bold"
 
 [font.italic]
-family = "Iosevka Term"
-style = "Regular"
+family = "Iosevka Nerd Font"
+style = "Italic"
 
 [font.normal]
-family = "Iosevka Term"
+family = "Iosevka Nerd Font"
 style = "Regular"
 
 [[keyboard.bindings]]
@@ -217,4 +217,4 @@ history = 100000
 decorations = "Buttonless"
 padding = { x = 3, y = 3 }
 dynamic_padding = true
-opacity = 0.85
+#opacity = 0.85

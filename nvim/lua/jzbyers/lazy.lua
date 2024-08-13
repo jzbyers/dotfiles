@@ -12,10 +12,38 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{
-		'nvim-telescope/telescope.nvim', tag = '0.1.6',
-		dependencies = { 'nvim-lua/plenary.nvim' }
-	},
+	--{
+	--	'nvim-telescope/telescope.nvim', tag = '0.1.6',
+	--	dependencies = { 'nvim-lua/plenary.nvim' }
+	--},
+    {
+      "ibhagwan/fzf-lua",
+      -- optional for icon support
+      dependencies = { "nvim-tree/nvim-web-devicons" },
+      config = function()
+        -- calling `setup` is optional for customization
+            require("fzf-lua").setup({
+                files = {
+                    -- ignore git files, node_modules, and vendor when searching files
+                    cmd = "rg --files --hidden --follow -g '!{.git,node_modules}/*' -g '!vendor/*'",
+                },
+                winopts = {
+                    border = "single",
+                    height = 0.98,
+                    width = 0.98,
+                    preview = {
+                        default = "bat",
+                        border = "border",
+                        title = false,
+                        vertical = 'down:40%',
+                        horizontal = 'right:45%',
+                        layout = "flex",
+                        flip_columns = 120,
+                    },
+                },
+            })
+      end
+    },
     { 
         "catppuccin/nvim", 
         name = "catppuccin", 
@@ -98,25 +126,31 @@ require("lazy").setup({
 
 vim.cmd.colorscheme 'catppuccin'
 
--- Configure Telescope
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-vim.keymap.set('n', '<leader>fm', ':lua vim.lsp.buf.format()<CR>', {})
-vim.keymap.set('n', '<leader>ps', function()
-    builtin.grep_string({ search = vim.fn.input('Grep > ') });
-end)
-
 vim.keymap.set('n', '<F7>', vim.diagnostic.goto_prev, {})
 vim.keymap.set('n', '<F8>', vim.diagnostic.goto_next, {})
 
-require('telescope').setup{
-    defaults = {
-        file_ignore_patterns = { "vendor" },
-        layout_strategy = 'vertical',
-        layout_config = { height = 0.95, width=0.95 },
-    }
-}
+local fzflua = require("fzf-lua")
+vim.keymap.set('n', '<leader>fg', fzflua.live_grep, {})
+vim.keymap.set('n', '<leader>fb', fzflua.buffers, {})
+vim.keymap.set('n', '<leader>q', fzflua.quickfix, {})
+vim.keymap.set('n', '<leader>gs', fzflua.git_status, {})
+
+-- Configure Telescope
+--local builtin = require('telescope.builtin')
+--vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+--vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+--vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+--vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+--vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+--vim.keymap.set('n', '<leader>fm', ':lua vim.lsp.buf.format()<CR>', {})
+--vim.keymap.set('n', '<leader>ps', function()
+--    builtin.grep_string({ search = vim.fn.input('Grep > ') });
+--end)
+--
+--require('telescope').setup{
+--    defaults = {
+--        file_ignore_patterns = { "vendor" },
+--        layout_strategy = 'vertical',
+--        layout_config = { height = 0.95, width=0.95 },
+--    }
+--}

@@ -40,11 +40,11 @@ keyset("n", "<up>", ":resize -1<cr>")
 keyset("n", "<right>", ":vertical resize +1<cr>")
 keyset("n", "<left>", ":vertical resize -1<cr>")
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "sql",
-  callback = function()
-    vim.opt.foldmethod = "indent"
-    vim.opt.foldcolumn = "0"
-    vim.opt.foldnestmax = 20 
-  end,
-})
+--vim.api.nvim_create_autocmd("FileType", {
+--  pattern = "sql",
+--  callback = function()
+--    vim.opt.foldmethod = "indent"
+--    vim.opt.foldcolumn = "0"
+--    vim.opt.foldnestmax = 20 
+--  end,
+--})
