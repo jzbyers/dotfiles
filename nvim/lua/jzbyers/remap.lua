@@ -58,3 +58,7 @@ vim.keymap.set("n", "<leader>w", "<cmd>w<CR>")
 -- zM: increases the foldlevel to the maximum -- all folds will be closed.
 vim.keymap.set('n', '<leader>fo', 'zR', {noremap = true, silent = true})
 vim.keymap.set('n', '<leader>fc', 'zM', {noremap = true, silent = true})
+
+-- Reload Neovim config
+vim.api.nvim_set_keymap('n', '<leader>r', ':source /Users/jackbyers/src/jzbyers/dotfiles/nvim/init.lua<CR>', { noremap = true, silent = true })
+

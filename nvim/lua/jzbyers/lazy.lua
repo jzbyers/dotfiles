@@ -16,10 +16,14 @@ require("lazy").setup({
 	--	'nvim-telescope/telescope.nvim', tag = '0.1.6',
 	--	dependencies = { 'nvim-lua/plenary.nvim' }
 	--},
+    -- For creating color themes
+    {
+        "rktjmp/lush.nvim"
+    },
     {
       "ibhagwan/fzf-lua",
       -- optional for icon support
-      dependencies = { "nvim-tree/nvim-web-devicons" },
+      -- dependencies = { "nvim-tree/nvim-web-devicons" },
       config = function()
         -- calling `setup` is optional for customization
             require("fzf-lua").setup({
@@ -51,6 +55,11 @@ require("lazy").setup({
         opts = {
             transparent_background = true,
         }
+    },
+    {
+        'jonathanfilip/vim-lucius',
+        name = 'lucius',
+        priority = 1000,
     },
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -105,7 +114,7 @@ require("lazy").setup({
 
     -- Git
     "tpope/vim-fugitive",
-    "airblade/vim-gitgutter",
+    --"airblade/vim-gitgutter",
     "tpope/vim-rhubarb",
 
     -- Copilot
@@ -124,7 +133,8 @@ require("lazy").setup({
 
 }, {})
 
-vim.cmd.colorscheme 'catppuccin'
+vim.cmd.colorscheme 'lucius'
+vim.cmd('LuciusBlackLowContrast')
 
 vim.keymap.set('n', '<F7>', vim.diagnostic.goto_prev, {})
 vim.keymap.set('n', '<F8>', vim.diagnostic.goto_next, {})
