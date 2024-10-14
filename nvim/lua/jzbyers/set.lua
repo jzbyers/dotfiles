@@ -44,6 +44,9 @@ keyset("n", "<left>", ":vertical resize -1<cr>")
 keyset('n', '<C-j>', '5j', { noremap = true, silent = true })
 keyset('n', '<C-k>', '5k', { noremap = true, silent = true })
 
+-- Reload Neovim configuration
+keyset('n', '<leader>r', ':luafile ~/.config/nvim/init.lua<CR>', { noremap = true, silent = true })
+
 
 --vim.api.nvim_create_autocmd("FileType", {
 --  pattern = "sql",
