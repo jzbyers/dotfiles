@@ -15,7 +15,9 @@ export PATH="$PATH:/Users/jackbyers/src/alacritty/target/release/osx/Alacritty.a
 export PATH=$PATH:$HOME/.cargo/bin
 
 # Ruby
-export PATH="$PATH:/Library/Ruby/Gems/2.6.0"
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+# Rails
+export PATH="/opt/homebrew/lib/ruby/gems/3.3.0/bin:$PATH"
 
 # Python Poetry
 export PATH="/Users/jackbyers/.local/bin:$PATH"

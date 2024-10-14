@@ -3,8 +3,6 @@ require("jzbyers.set")
 require("jzbyers.lazy")
 require("jzbyers.lsp")
 require("jzbyers.status")
-require("jzbyers.fzf")
-require("jzbyers.lastplace")
 
 -- I like good colors
 vim.api.nvim_set_option('termguicolors', true)

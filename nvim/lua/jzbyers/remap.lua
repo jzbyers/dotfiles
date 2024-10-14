@@ -52,6 +52,8 @@ vim.keymap.set("n", "<leader>ce", ":Copilot enable<CR>")
 
 -- Quick save
 vim.keymap.set("n", "<leader>w", "<cmd>w<CR>")
+-- Suspend
+vim.keymap.set('n', '<leader>s', '<C-z>', { silent = true })
 
 -- Easy folding:
 -- zR: decreases the foldlevel to zero -- all folds will be open.
