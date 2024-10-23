@@ -24,7 +24,7 @@ set ai "Auto indent
 set si "Smart indent
 
 " Enable vim paragraph motion
-set vim-paragraph-motion
+" set vim-paragraph-motion
 
 " Two-space indents in JSON
 autocmd! FileType json set sw=2 sts=2 expandtab
@@ -67,9 +67,27 @@ nnoremap <silent>gr :action FindUsages<CR>
 "nnoremap <silent>grn :lua vim.lsp.buf.rename()<CR>
 "nnoremap <silent>gh :lua vim.lsp.buf.hover()<CR>
 
-" Cursor Movement:
-nnoremap <C-j> 5<j>
-nnoremap <C-k> 5<k>
-
 nnoremap <C-e> 5<C-e>
 nnoremap <C-y> 5<C-y>
+
+" Map C-j and C-k to move 5 lines up and down
+nmap <C-j> 5j
+nmap <C-j> 5k
+
+" Create splits
+nmap sv :vsplit <CR>
+nmap sV <Action>(MoveTabRight)
+nmap ss <Action>(MoveEditorToOppositeTabGroup)
+
+" Move between splits
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+
+" File Navigation
+nmap <C-p> <ESC>:action GotoFile<CR>
+
+" Map <leader> fb to open recent files (similar to searching Neovim buffers)
+nnoremap <leader>fb <ESC>:action RecentFiles<CR>
+

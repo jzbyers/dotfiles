@@ -1,7 +1,8 @@
 vim.opt.guicursor = ""          
 
---vim.opt.nu = true        
---vim.opt.relativenumber = true  
+-- Kinda digging the "zen" mode of no line numbers
+vim.opt.nu = true        
+vim.opt.relativenumber = true  
 
 vim.opt.tabstop = 4 
 vim.opt.softtabstop = 4
@@ -21,7 +22,7 @@ vim.opt.incsearch = true
 vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8   
---vim.opt.signcolumn = "yes"
+vim.opt.signcolumn = "yes"
 
 vim.opt.updatetime = 50
 
@@ -41,21 +42,12 @@ keyset("n", "<up>", ":resize -1<cr>")
 keyset("n", "<right>", ":vertical resize +1<cr>")
 keyset("n", "<left>", ":vertical resize -1<cr>")
 
+-- Move up and down more quickly
 keyset('n', '<C-j>', '5j', { noremap = true, silent = true })
 keyset('n', '<C-k>', '5k', { noremap = true, silent = true })
 
--- Reload Neovim configuration
-keyset('n', '<leader>r', ':luafile ~/.config/nvim/init.lua<CR>', { noremap = true, silent = true })
-
-
---vim.api.nvim_create_autocmd("FileType", {
---  pattern = "sql",
---  callback = function()
---    vim.opt.foldmethod = "indent"
---    vim.opt.foldcolumn = "0"
---    vim.opt.foldnestmax = 20 
---  end,
---})
+-- Close quickfix list
+keyset('n', '<leader>q', ':cclose<CR>', { noremap = true, silent = true })
 
 -- Set up tab size configuration for JavaScript and TypeScript
 vim.api.nvim_create_autocmd({"FileType"}, {
@@ -67,3 +59,22 @@ vim.api.nvim_create_autocmd({"FileType"}, {
   end
 })
 
+--------------------------------------------------------------------------------
+-- Sometimes I really like folding, sometimes I really don't
+--------------------------------------------------------------------------------
+
+-- Configure folding using treesitter
+-- vim.opt.foldmethod = 'expr'
+-- vim.opt.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+-- Only fold the outermost indents
+-- vim.opt.foldmethod = 'indent'
+-- vim.opt.foldnestmax = 1
+--
+--vim.api.nvim_create_autocmd("FileType", {
+--  pattern = "sql",
+--  callback = function()
+--    vim.opt.foldmethod = "indent"
+--    vim.opt.foldcolumn = "0"
+--    vim.opt.foldnestmax = 20 
+--  end,
+--})
