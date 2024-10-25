@@ -1,11 +1,6 @@
-# Notes
+# Dotfiles 
 
-I'm keeping my Alacritty config around in case I feel like switching back in 
-the future, but I'm currently using Kitty as my terminal emulator.
-
-## Fresh setup
-
-### MacOS
+## Fresh setup for MacOS
 
 - System Settings
     - Keyboard
