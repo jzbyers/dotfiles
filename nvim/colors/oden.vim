@@ -1,1 +1,0 @@
-/Users/jackbyers/src/themes/nvim/oden.vim

@@ -1,13 +1,32 @@
-# Notes about my dotfiles
+# Notes
 
-## Alacritty + Tmux
+I'm keeping my Alacritty config around in case I feel like switching back in 
+the future, but I'm currently using Kitty as my terminal emulator.
 
-One of my favorite features of Alacritty is its ability to send escape sequences 
-in hexcode for custom keyboard shortcuts. This allows me to remap `tmux` 
-keybindings to whatever I want, so instead of pressing `ctrl-f c` to create a 
-tab, I can remap that to `cmd + t` (using a Mac keyboard here for example).
+## Fresh setup
 
-All of my keyboard shortcuts can be found in `alacritty.toml`.
+### MacOS
 
+- System Settings
+    - Keyboard
+        - Key Repeat: Fast
+        - Delay Until Repeat: Short
+    - Trackpad
+        - Tap to click
+        - Tracking speed: 6th notch
+    - Mouse
+        - Tracking speed: 7th notch
+        - Double-click speed: 8th notch
+        - Scrolling speed: 4th notch
+    - Desktop & Dock
+        - Position on screen: Left
+        - Automatically hide and show the Dock: On
 
-
+- Install Xcode
+- Install Homebrew
+- Open Terminal and then:
+    1. Install Git and setup SSH keys: `brew install git`
+    2. Create `src` directory and subdir for my personal github: `mkdir -p src/jzbyers && cd src/jzbyers`
+    3. Clone dotfiles: `git clone git@github.com:jzbyers/dotfiles.git`
+    4. Kickoff the Homebrew install: `brew bundle --file Brewfile.arm64` in this directory
+    5. Symlink configs: `./link.sh`

@@ -104,8 +104,8 @@ alias ssh="TERM=xterm-256color ssh"
 # Search process table (ex. psg zsh)
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 
-# Use exa for listing files and directories
-alias ls='exa --color=always --long --git --no-icons --no-time --no-user --no-permissions --group-directories-first'
+# Use eza for listing files and directories
+alias ls='eza --color=always --long --git --no-time --no-user --no-permissions --group-directories-first'
 
 # terraform
 alias tf=terraform
@@ -323,25 +323,23 @@ setopt PROMPT_SUBST
 PROMPT='%B%F{magenta}%2~%f%b %F{blue}${vcs_info_msg_0_}%f
 '$'\U25CF'' '
 
-# # ==============================================================================
-# # Last but not least
-# # ==============================================================================
+# ==============================================================================
+# Last but not least
+# ==============================================================================
 
-# # source aliases, functions, etc. for Oden
-# sources=(
-#   "${HOME}/.zshrc_oden"
-# )
+# source other things, like aliases, functions, etc. for Oden
+sources=(
+  "${HOME}/.oden_profile"
+)
 
-# for f in "${sources[@]}"; do
-#   if [ -f "${f}" ]; then
-#     # shellcheck disable=SC1090
-#     . "${f}"
-#   else
-#     if [ "${DEBUG}" ]; then
-#       echo "*** WARNING: file ${f} does not exist" >&2
-#     fi
-#   fi
-# done
-
-# pyenv_init
+for f in "${sources[@]}"; do
+  if [ -f "${f}" ]; then
+    # shellcheck disable=SC1090
+    . "${f}"
+  else
+    if [ "${DEBUG}" ]; then
+      echo "*** WARNING: file ${f} does not exist" >&2
+    fi
+  fi
+done
 

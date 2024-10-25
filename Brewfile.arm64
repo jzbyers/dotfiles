@@ -1,6 +1,17 @@
 tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/core"
+#tap "homebrew/cask" # this is no longer typically necessary
+#tap "homebrew/core" # this is no longer typically necessary
+
+####################################################
+# Casks
+####################################################
+cask "google-chrome"
+cask "1password"
+cask "docker"
+cask "slack"
+cask "visual-studio-code"
+cask "google-cloud-sdk"
+cask "clickhouse"
 
 ####################################################
 # Terminal
@@ -13,9 +24,6 @@ brew "tmux"
 brew "zsh"
 brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
-
-# exa is a replacement for ls
-brew "exa"
 
 # tree for viewing directory
 brew "tree"
@@ -37,8 +45,6 @@ brew "neovim"
 # Infra
 #
 
-cask "google-cloud-sdk"
-cask "docker"
 brew "terraform"
 brew "helm"
 brew "kubectl"
@@ -52,6 +58,7 @@ brew "llvm"
 brew "node"
 brew "nvm"
 brew "typescript"
+brew "yarn"
 
 brew "protobuf"
 brew "prototool"
@@ -60,7 +67,21 @@ brew "pyenv"
 brew "pyenv-virtualenv"
 brew "python@3"
 
-brew "go@1.17"
+brew "go@1.23"
+brew "gopls"
+
+brew "openjdk@17"
+brew "google-java-format"
+
+brew "clojure"
+
+brew "grpcurl"
+
+brew "shellcheck"
+brew "tfenv"
+
+brew "lua"
+brew "lua-language-server"
 
 #
 # GNU command line tools
@@ -82,9 +103,11 @@ brew "wget"
 brew "git"
 brew "fzf"
 brew "grep"
+brew "ripgrep"
 brew "jq"
 brew "yq"
 brew "htop"
 brew "bat" # bat > cat
 brew "hey" # for load testing
 brew "fd" # fd > find 
+brew "eza" # eza > ls

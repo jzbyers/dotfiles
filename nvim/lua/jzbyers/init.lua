@@ -1,6 +1,6 @@
 require("jzbyers.remap")
 require("jzbyers.set")
-require("jzbyers.lazy")
+require("jzbyers.plugins")
 require("jzbyers.lsp")
 require("jzbyers.status")
 
