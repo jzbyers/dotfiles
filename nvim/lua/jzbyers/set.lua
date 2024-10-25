@@ -51,7 +51,16 @@ keyset('n', '<leader>q', ':cclose<CR>', { noremap = true, silent = true })
 
 -- Set up tab size configuration for JavaScript and TypeScript
 vim.api.nvim_create_autocmd({"FileType"}, {
-  pattern = {"javascript", "typescript", "javascriptreact", "typescriptreact"},
+  pattern = {
+    "javascript", 
+    "typescript", 
+    "javascriptreact", 
+    "typescriptreact",
+    "lua",
+    "python",
+    "bash",
+    "sh"
+  },
   callback = function()
     vim.bo.shiftwidth = 2    -- Set the number of spaces for each indentation
     vim.bo.tabstop = 2       -- Set the number of spaces that a tab character represents
