@@ -38,17 +38,24 @@ require("lazy").setup({
 			configs.setup({
 				ensure_installed = { 
 					"go", 
+          "java", "clojure", "kotlin",
 					"python", 
-                    "rust",
-					"c", 
-					"cpp", 
+          "rust",
+					"c", "cpp", 
 					"lua", 
-					"javascript", 
-                    "typescript",
-					"html"
+          "zig",
+					"javascript", "typescript", "html", "css",
+          "haskell", "ocaml", "scala",
+          "swift",
+          "sql",
+          "dockerfile", "bash", "cmake", "vim", "markdown",
+          "gitcommit", "git_config", "git_rebase", "gitignore",
+          "json", "yaml", "toml",
+          "csv", "tsv",
+          "graphql"
 				},
 				sync_install = false,
-                auto_install = true,
+        auto_install = true,
 				highlight = { enable = true },
 				indent = { enable = true },  
 			})
