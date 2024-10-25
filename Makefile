@@ -8,10 +8,10 @@ brew: ## Install Homebrew packages
 	brew bundle --file=Brewfile.arm64
 
 link: ## Link dotfiles
-	./link.sh
+	./scripts/link.sh
 
 install: brew link ## Install Homebrew packages and link dotfiles
 
 nuke: ## Nuke symlinks so you may start over
-	./unlink.sh
+	./scripts/unlink.sh
 

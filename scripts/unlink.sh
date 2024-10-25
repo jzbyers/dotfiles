@@ -6,4 +6,5 @@
 	rm -f ~/.tmux.conf
 	rm -f ~/.psqlrc
   rm -f ~/.gitconfig
+  rm -f ~/.githelpers
   rm -f ~/.ideavimrc
