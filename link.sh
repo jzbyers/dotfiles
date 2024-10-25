@@ -5,3 +5,5 @@ ln -sF ~/src/jzbyers/dotfiles/nvim ~/.config/nvim
 ln -sF ~/src/jzbyers/dotfiles/bat ~/.config/bat
 ln -sF ~/src/jzbyers/dotfiles/tmuxconf ~/.tmux.conf
 ln -sF ~/src/jzbyers/dotfiles/psqlrc ~/.psqlrc
+ln -sF ~/src/jzbyers/dotfiles/gitconfig ~/.gitconfig
+ln -sF ~/src/jzbyers/dotfiles/ideavimrc ~/.ideavimrc

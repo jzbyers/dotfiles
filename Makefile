@@ -1,28 +1,17 @@
-all: install
+.PHONY: install nuke
+.DEFAULT_GOAL := help
 
-install:
-	mkdir -p ~/.config/alacritty
-	mkdir -p ~/.config/nvim
+help: ## Show help
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
-	[ -f ~/.zshrc ] || ln -s $(PWD)/zshrc ~/.zshrc
-	[ -f ~/.config/alacritty/alacritty.yml ] || ln -s $(PWD)/alacritty.yml ~/.config/alacritty/alacritty.yml
-	[ -f ~/.config/nvim/init.vim ] || ln -s $(PWD)/nvim_init.vim ~/.config/nvim/init.vim
-	[ -f ~/.ideavimrc ] || ln -s $(PWD)/ideavimrc ~/.ideavimrc
-	[ -f ~/.tmux.conf ] || ln -s $(PWD)/tmuxconf ~/.tmux.conf
-	[ -f ~/.git-prompt.sh ] || ln -s $(PWD)/git-prompt.sh ~/.git-prompt.sh
-	[ -f ~/.gitconfig ] || ln -s $(PWD)/gitconfig ~/.gitconfig
-	[ -f ~/.oden_aliases ] || ln -s $(PWD)/oden_aliases ~/.oden_aliases
-	[ -f ~/.oden_functions ] || ln -s $(PWD)/oden_functions ~/.oden_functions
+brew: ## Install Homebrew packages
+	brew bundle --file=Brewfile.arm64
 
-clean:
-	rm -f ~/.zshrc
-	rm -f ~/.config/alacritty/alacritty.yml
-	rm -f ~/.config/nvim/init.vim
-	rm -f ~/.ideavimrc
-	rm -f ~/.tmux.conf
-	rm -f ~/.git-prompt.sh
-	rm -f ~/.gitconfig
-	rm -f ~/.oden_aliases
-	rm -f ~/.oden_functions
+link: ## Link dotfiles
+	./link.sh
 
-.PHONY: all clean sync build run kill
+install: brew link ## Install Homebrew packages and link dotfiles
+
+nuke: ## Nuke symlinks so you may start over
+	./unlink.sh
+

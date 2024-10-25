@@ -28,5 +28,5 @@ the future, but I'm currently using Kitty as my terminal emulator.
     1. Install Git and setup SSH keys: `brew install git`
     2. Create `src` directory and subdir for my personal github: `mkdir -p src/jzbyers && cd src/jzbyers`
     3. Clone dotfiles: `git clone git@github.com:jzbyers/dotfiles.git`
-    4. Kickoff the Homebrew install: `brew bundle --file Brewfile.arm64` in this directory
-    5. Symlink configs: `./link.sh`
+    4. Install dotfiles: `make install`
+
