@@ -12,6 +12,7 @@ cask "slack"
 cask "visual-studio-code"
 cask "google-cloud-sdk"
 cask "clickhouse"
+cask "kitty"
 
 ####################################################
 # Terminal
