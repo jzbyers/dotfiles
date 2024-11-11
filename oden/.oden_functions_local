@@ -1,0 +1,153 @@
+# vim: set ft=sh :
+
+# vi-mode for line movement
+#
+# Updates editor information when the keymap changes.
+function zle-keymap-select() {
+  # update keymap variable for the prompt
+  VI_KEYMAP=$KEYMAP
+
+  zle reset-prompt
+  zle -R
+}
+
+zle -N zle-keymap-select
+
+function vi-accept-line() {
+  VI_KEYMAP=main
+  zle accept-line
+}
+
+zle -N vi-accept-line
+
+bindkey -v
+
+# use custom accept-line widget to update $VI_KEYMAP
+bindkey -M vicmd '^J' vi-accept-line
+bindkey -M vicmd '^M' vi-accept-line
+
+# allow v to edit the command line (standard behaviour)
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey -M vicmd 'v' edit-command-line
+
+# allow ctrl-p, ctrl-n for navigate history (standard behaviour)
+bindkey '^P' up-history
+bindkey '^N' down-history
+
+# allow ctrl-h, ctrl-w, ctrl-? for char and word deletion (standard behaviour)
+bindkey '^?' backward-delete-char
+bindkey '^h' backward-delete-char
+bindkey '^w' backward-kill-word
+
+# allow ctrl-r and ctrl-s to search the history
+bindkey '^r' history-incremental-search-backward
+bindkey '^s' history-incremental-search-forward
+
+# allow ctrl-a and ctrl-e to move to beginning/end of line
+bindkey '^a' beginning-of-line
+bindkey '^e' end-of-line
+
+# bind jj to vi command mode
+bindkey jj vi-cmd-mode
+
+# Tmux
+# Attaches tmux to the last session, or creates a new session with one window
+function t() { tmux new-session -A -s $1 } 
+# Attaches tmux to a session (example: ta portal)
+function ta() { tmux attach -t $1 }
+# Kills a named session
+function tk() { tmux kill-session -t $1 }
+# Lists sessions
+function tl() { tmux list-sessions }
+
+# The most magical way to checkout an existing git branch
+function gb() {
+    git checkout $(git branch --sort=-committerdate --format="%(committerdate:short) %(refname:short)" | fzf --reverse | cut -d\  -f2)
+}
+
+# Force delete unmerged git branches
+function gclean() {
+    git branch --merged | egrep -v "(^\*|main|master|dev|develop)" | xargs git branch -d
+}
+
+# Run gofmt on changed files
+function ggofmt() {
+    for x in `git status -s|awk '{ print $2}'`; do gofmt -w $x; done
+}
+
+# uuid2pb function for representing UUIDs as "json protobuf" i.e. what grpcurl / prototool expects
+function uuid2pb() {
+    python -c 'import uuid; import base64; print("{\"uuid\": \"" + base64.b64encode(uuid.UUID("'"$1"'").bytes).decode("ascii") + "\"}")'
+}
+
+# pprint pretty-prints JSON data in Python
+function pprint() {
+    /usr/bin/python -c 'import json; print(json.dumps('$1', indent=2))'
+}
+
+# Search for something in your history
+# Usage: h <something>
+function h() {
+    # check if we passed any parameters
+    if [ -z "$*" ]; then
+        # if no parameters were passed print entire history
+        history 1
+    else
+        # if words were passed use it as a search
+        history 1 | egrep --color=auto "$@"
+    fi
+}
+
+# Get logs from Kubernetes pod
+function klog() {
+    k logs $(k get pods | grep $1 |  head -n 1 | awk '{print $1;}') $1
+}
+
+# Set up directory marking commands.
+# See: http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
+# And: https://news.ycombinator.com/item?id=6229001
+export MARKPATH=$HOME/.marks
+function goto {
+    cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
+}
+function mark {
+    mkdir -p "$MARKPATH"; ln -s "$(pwd)" "$MARKPATH/$1"
+}
+function unmark {
+    rm -i "$MARKPATH/$1"
+}
+function marks {
+    \ls -l "$MARKPATH" | tail -n +2 | sed 's/  / /g' | cut -d' ' -f9- | awk -F ' -> ' '{printf "%-10s -> %s\n", $1, $2}'
+}
+
+# ==============================================================================
+# ZSH CONFIG
+# ==============================================================================
+
+## Command history configuration
+HISTFILE=$HOME/.zsh_history
+HISTSIZE=1000000
+SAVEHIST=1000000
+
+setopt append_history
+setopt extended_history
+setopt hist_expire_dups_first
+setopt inc_append_history
+
+# Ignore duplication command history list
+setopt hist_ignore_dups 
+setopt hist_ignore_space
+setopt hist_verify
+
+# Don't import commands from the history file during a shell session. Commands
+# from the history file will be loaded on shell startup, but from that point
+# forward only commands in that shell will be added to the local history.
+setopt nosharehistory
+
+# https://superuser.com/questions/479600/how-can-i-prevent-tmux-exiting-with-ctrl-d
+# https://superuser.com/questions/1243138/why-does-ignoreeof-not-work-in-zsh/1309966
+setopt ignore_eof
+export IGNOREEOF=10
+zle -N bash-ctrl-d
+bindkey '^D' bash-ctrl-d

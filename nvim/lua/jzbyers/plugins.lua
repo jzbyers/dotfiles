@@ -19,6 +19,7 @@ require("lazy").setup({
 	},
 
     -- Color scheme
+    { "EdenEast/nightfox.nvim" },
     { 
         "catppuccin/nvim", 
         name = "catppuccin", 
@@ -108,7 +109,8 @@ require("lazy").setup({
 
 }, {})
 
-vim.cmd.colorscheme 'catppuccin-mocha'
+vim.cmd.colorscheme 'terafox'
+-- vim.cmd.colorscheme 'catppuccin-mocha'
 
 vim.keymap.set('n', '<F7>', vim.diagnostic.goto_prev, {})
 vim.keymap.set('n', '<F8>', vim.diagnostic.goto_next, {})
