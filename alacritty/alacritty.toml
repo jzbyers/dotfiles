@@ -1,170 +1,109 @@
-[colors]
-draw_bold_text_with_bright_colors = true
-
-[colors.primary]
-background = "#24273a"
-foreground = "#cad3f5"
-dim_foreground = "#8087a2"
-bright_foreground = "#cad3f5"
-
-[colors.cursor]
-text = "#24273a"
-cursor = "#f4dbd6"
-
-[colors.vi_mode_cursor]
-text = "#24273a"
-cursor = "#b7bdf8"
-
-[colors.search.matches]
-foreground = "#24273a"
-background = "#a5adcb"
-
-[colors.search.focused_match]
-foreground = "#24273a"
-background = "#a6da95"
-
-[colors.footer_bar]
-foreground = "#24273a"
-background = "#a5adcb"
-
-[colors.hints.start]
-foreground = "#24273a"
-background = "#eed49f"
-
-[colors.hints.end]
-foreground = "#24273a"
-background = "#a5adcb"
-
-[colors.selection]
-text = "#24273a"
-background = "#f4dbd6"
-
-[colors.normal]
-black = "#494d64"
-red = "#ed8796"
-green = "#a6da95"
-yellow = "#eed49f"
-blue = "#8aadf4"
-magenta = "#f5bde6"
-cyan = "#8bd5ca"
-white = "#b8c0e0"
-
-[colors.bright]
-black = "#5b6078"
-red = "#ed8796"
-green = "#a6da95"
-yellow = "#eed49f"
-blue = "#8aadf4"
-magenta = "#f5bde6"
-cyan = "#8bd5ca"
-white = "#a5adcb"
-
-[colors.dim]
-black = "#494d64"
-red = "#ed8796"
-green = "#a6da95"
-yellow = "#eed49f"
-blue = "#8aadf4"
-magenta = "#f5bde6"
-cyan = "#8bd5ca"
-white = "#b8c0e0"
-
-[[colors.indexed_colors]]
-index = 16
-color = "#f5a97f"
-
-[[colors.indexed_colors]]
-index = 17
-color = "#f4dbd6"
-
 [env]
 TERM = "xterm-256color"
+
+[mouse]
+hide_when_typing = true
 
 [font]
 size = 14
 
 [font.bold]
-family = "Iosevka Nerd Font"
+family = "InconsolataGo Nerd Font"
 style = "Bold"
 
 [font.italic]
-family = "Iosevka Nerd Font"
+family = "InconsolataGo Nerd Font"
 style = "Italic"
 
 [font.normal]
-family = "Iosevka Nerd Font"
+family = "InconsolataGo Nerd Font"
 style = "Regular"
 
+# New vertical split pane
 [[keyboard.bindings]]
 chars = "\u0006v"
 key = "D"
 mods = "Command"
 
+# New horizontal split pane
 [[keyboard.bindings]]
 chars = "\u0006s"
 key = "D"
 mods = "Command|Shift"
 
+# Close pane
 [[keyboard.bindings]]
 chars = "\u0006w"
 key = "W"
 mods = "Command"
 
+# Switch to left pane
 [[keyboard.bindings]]
 chars = "\u0006h"
 key = "H"
 mods = "Command"
 
+# Switch to down pane
 [[keyboard.bindings]]
 chars = "\u0006j"
 key = "J"
 mods = "Command"
 
+# Switch to up pane
 [[keyboard.bindings]]
 chars = "\u0006k"
 key = "K"
 mods = "Command"
 
+# Switch to right pane
 [[keyboard.bindings]]
 chars = "\u0006l"
 key = "L"
 mods = "Command"
 
+# New tab
 [[keyboard.bindings]]
 chars = "\u0006c"
 key = "T"
 mods = "Command"
 
+# Next tab
 [[keyboard.bindings]]
 chars = "\u0006n"
 key = "RBracket"
 mods = "Command|Shift"
 
+# Previous tab
 [[keyboard.bindings]]
-chars = "\u0006["
+chars = "\u0006p"
 key = "LBracket"
 mods = "Command|Shift"
 
+# Resize pane left
 [[keyboard.bindings]]
 chars = "\u0006H"
 key = "Left"
 mods = "Command"
 
+# Resize pane down
 [[keyboard.bindings]]
 chars = "\u0006J"
 key = "Down"
 mods = "Command"
 
+# Resize pane up
 [[keyboard.bindings]]
 chars = "\u0006K"
 key = "Up"
 mods = "Command"
 
+# Resize pane right
 [[keyboard.bindings]]
 chars = "\u0006L"
 key = "Right"
 mods = "Command"
 
+# Switch to specific tab
 [[keyboard.bindings]]
 chars = "\u00061"
 key = "Key1"
@@ -218,3 +157,127 @@ decorations = "Buttonless"
 padding = { x = 3, y = 3 }
 dynamic_padding = true
 #opacity = 0.85
+
+
+# Nightfox Alacritty Colors
+## name: terafox
+## upstream: https://github.com/edeneast/nightfox.nvim/raw/main/extra/terafox/alacritty.toml
+
+[colors.primary]
+background = "#152528"
+foreground = "#e6eaea"
+dim_foreground = "#cbd9d8"
+bright_foreground = "#eaeeee"
+
+[colors.cursor]
+text = "#e6eaea"
+cursor = "#cbd9d8"
+
+[colors.vi_mode_cursor]
+text = "#e6eaea"
+cursor = "#a1cdd8"
+
+[colors.search.matches]
+foreground = "#e6eaea"
+background = "#425e5e"
+
+[colors.search.focused_match]
+foreground = "#e6eaea"
+background = "#7aa4a1"
+
+[colors.footer_bar]
+foreground = "#e6eaea"
+background = "#254147"
+
+[colors.hints.start]
+foreground = "#e6eaea"
+background = "#ff8349"
+
+[colors.hints.end]
+foreground = "#e6eaea"
+background = "#254147"
+
+[colors.selection]
+text = "#e6eaea"
+background = "#293e40"
+
+[colors.normal]
+black = "#2f3239"
+red = "#e85c51"
+green = "#7aa4a1"
+yellow = "#fda47f"
+blue = "#5a93aa"
+magenta = "#ad5c7c"
+cyan = "#a1cdd8"
+white = "#ebebeb"
+
+[colors.bright]
+black = "#4e5157"
+red = "#eb746b"
+green = "#8eb2af"
+yellow = "#fdb292"
+blue = "#73a3b7"
+magenta = "#b97490"
+cyan = "#afd4de"
+white = "#eeeeee"
+
+[colors.dim]
+black = "#282a30"
+red = "#c54e45"
+green = "#688b89"
+yellow = "#d78b6c"
+blue = "#4d7d90"
+magenta = "#934e69"
+cyan = "#89aeb8"
+white = "#c8c8c8"
+
+[[colors.indexed_colors]]
+index = 16
+color = "#ff8349"
+
+[[colors.indexed_colors]]
+index = 17
+color = "#cb7985"
+
+
+## Some of these key bindings are set specifically for tmux. See tmuxconf for
+## more detail.
+#key_bindings:
+#  # cmd + d to open a vertical pane
+#  - { key: D,        mods: Command,       chars: "\x06\x76" } 
+#  # cmd + shift + d to open a horizontal pane
+#  - { key: D,        mods: Command|Shift, chars: "\x06\x73" }
+#  # cmd + w to close a window (tab)
+#  - { key: W,        mods: Command,       chars: "\x06\x77" }
+#  # cmd + h to switch to left pane
+#  - { key: H,        mods: Command,       chars: "\x06\x68" }
+#  # cmd + j to switch to down pane
+#  - { key: J,        mods: Command,       chars: "\x06\x6a" }
+#  # cmd + k to switch to up pane
+#  - { key: K,        mods: Command,       chars: "\x06\x6b" }
+#  # cmd + l to switch to right pane
+#  - { key: L,        mods: Command,       chars: "\x06\x6c" }
+#  # cmd + t to open new window (tab) 
+#  - { key: T,        mods: Command,       chars: "\x06\x63" }
+#  # cmd + shift + ] to go to next window (tab) 
+#  - { key: RBracket, mods: Command|Shift, chars: "\x06\x6e" }
+#  # cmd + shift + [ to go to previous window (tab) 
+#  - { key: LBracket, mods: Command|Shift, chars: "\x06\x5b" }
+#  # cmd + left to resize pane left 
+#  - { key: Left,     mods: Command,       chars: "\x06\x48" }
+#  # cmd + down to resize pane down 
+#  - { key: Down,     mods: Command,       chars: "\x06\x4a" }
+#  # cmd + up to resize pane up 
+#  - { key: Up,       mods: Command,       chars: "\x06\x4b" }
+#  # cmd + right to resize pane right 
+#  - { key: Right,    mods: Command,       chars: "\x06\x4c" }
+#  # cmd + <number> to switch to specific window
+#  - { key: Key1,     mods: Command,       chars: "\x06\x31" }
+#  - { key: Key2,     mods: Command,       chars: "\x06\x32" }
+#  - { key: Key3,     mods: Command,       chars: "\x06\x33" }
+#  - { key: Key4,     mods: Command,       chars: "\x06\x34" }
+#  - { key: Key5,     mods: Command,       chars: "\x06\x35" }
+#  - { key: Key6,     mods: Command,       chars: "\x06\x36" }
+#  - { key: Key7,     mods: Command,       chars: "\x06\x37" }
+#  - { key: Key8,     mods: Command,       chars: "\x06\x38" }
+#  - { key: Key9,     mods: Command,       chars: "\x06\x39" }
