@@ -1,1 +1,26 @@
-# vim: set ft=sh :
+# vi: ft=bash
+
+# Load colors (red, blue, green, cyan, yellow, magenta, black, white)
+autoload -U colors && colors
+
+# Load version control information
+autoload -Uz vcs_info
+precmd() { vcs_info }
+
+# Format the vcs_info_msg_0_ variable
+zstyle ':vcs_info:git:*' formats '(%b) '
+
+# Set up the prompt (with git branch name)
+# %(?.√.?%?)    if the return code ? is 0, show check mark, else show ?%?
+# %?            exit code of previous command
+# %1~           current working dir, shortening home to ~, show only last 1 element
+# %#            with root privileges, % otherwise
+# %B %b         start/stop bold
+# %F{...}       text foreground color (see table: https://www.calmar.ws/vim/256-xterm-24bit-rgb-color-chart.html)
+# %f            reset to default text color
+
+setopt PROMPT_SUBST
+
+# Prompt without check mark, with new line for input
+PROMPT='%B%F{magenta}%2~%f%b %F{blue}${vcs_info_msg_0_}%f
+'$'\U25CF'' '

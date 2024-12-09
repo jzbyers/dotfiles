@@ -71,9 +71,9 @@ nnoremap <C-e> 5<C-e>
 nnoremap <C-y> 5<C-y>
 
 " Map C-j and C-k to move 5 lines up and down
-nmap <C-j> 5j
-nmap <C-j> 5k
-
+nnoremap <C-j> 5j
+nnoremap <C-j> 5k
+"
 " Create splits
 nmap sv :vsplit <CR>
 nmap sV <Action>(MoveTabRight)

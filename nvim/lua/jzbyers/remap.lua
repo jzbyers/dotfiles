@@ -30,7 +30,7 @@ vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
--- FormatGo
+-- Format using LSP
 vim.keymap.set('n', '<leader>f', ':lua vim.lsp.buf.format()<CR>', {noremap = true, silent = true})
 
 -- Jump to last file in buffer
@@ -53,7 +53,7 @@ vim.keymap.set("n", "<leader>ce", ":Copilot enable<CR>")
 -- Quick save
 vim.keymap.set("n", "<leader>w", "<cmd>w<CR>")
 -- Suspend
-vim.keymap.set('n', '<leader>s', '<C-z>', { silent = true })
+vim.api.nvim_set_keymap('n', '<leader>s', ':silent suspend<CR>', { noremap = true, silent = true })
 
 -- Easy folding:
 -- zR: decreases the foldlevel to zero -- all folds will be open.
@@ -61,6 +61,58 @@ vim.keymap.set('n', '<leader>s', '<C-z>', { silent = true })
 vim.keymap.set('n', '<leader>fo', 'zR', {noremap = true, silent = true})
 vim.keymap.set('n', '<leader>fc', 'zM', {noremap = true, silent = true})
 
+-- Go to next buffer (requires bufferline plugin)
+vim.api.nvim_set_keymap('n', '<C-]>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-[>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
+
+-- Close buffer with <leader>bd
+vim.keymap.set("n", "<leader>bd", ":bd<CR>")
+
+function ReloadConfig()
+  vim.cmd('source ~/.config/nvim/init.lua')
+  print('Reloaded config!')
+end
+
 -- Reload Neovim config
-vim.api.nvim_set_keymap('n', '<leader>r', ':source /Users/jackbyers/src/jzbyers/dotfiles/nvim/init.lua<CR>', { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>r", ":lua ReloadConfig()<CR>")
+
+-- Close all buffers except the current one with :BufOnly
+vim.api.nvim_create_user_command('BufOnly', function()
+  for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+    if bufnr ~= vim.api.nvim_get_current_buf() then
+      vim.api.nvim_buf_delete(bufnr, {})
+    end
+  end
+end, {})
+
+vim.keymap.set("n", "<leader>bo", ":BufOnly<CR>")
+
+-- Use <leader>lf to list functions in the current buffer
+vim.api.nvim_set_keymap('n', '<leader>lf', ":lua require('telescope.builtin').lsp_document_symbols({ symbols={'function', 'method'} })<CR>", { noremap = true, silent = true })
+
+function ListFunctionsAndMethods()
+  require('telescope.builtin').lsp_document_symbols({
+    symbols = { 'function', 'method' },
+    entry_maker = function(entry)
+      vim.notify(vim.inspect(entry), vim.log.levels.DEBUG)
+      local formatted = string.format("%s [line %d]", entry.text, entry.lnum)
+      return {
+        value = entry,
+        valid = true,
+        ordinal = entry.text,
+        display = formatted,
+        lnum = entry.lnum,
+        kind = entry.kind,
+        col = entry.col,
+        filename = entry.filename,
+      }
+    end
+  })
+end
+
+
+--vim.api.nvim_set_keymap('n', '<leader>lf', 
+--  ":lua ListFunctionsAndMethods()<CR>", 
+--  { noremap = true, silent = true }
+--)
 

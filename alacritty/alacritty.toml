@@ -8,16 +8,28 @@ hide_when_typing = true
 size = 14
 
 [font.bold]
-family = "InconsolataGo Nerd Font"
+family = "Berkeley Mono"
 style = "Bold"
 
 [font.italic]
-family = "InconsolataGo Nerd Font"
+family = "Berkeley Mono"
 style = "Italic"
 
 [font.normal]
-family = "InconsolataGo Nerd Font"
+family = "Berkeley Mono"
 style = "Regular"
+
+#[font.bold]
+#family = "InconsolataGo Nerd Font"
+#style = "Bold"
+#
+#[font.italic]
+#family = "InconsolataGo Nerd Font"
+#style = "Italic"
+#
+#[font.normal]
+#family = "InconsolataGo Nerd Font"
+#style = "Regular"
 
 # New vertical split pane
 [[keyboard.bindings]]
@@ -67,17 +79,24 @@ chars = "\u0006c"
 key = "T"
 mods = "Command"
 
+###############################################################################
+# These next two are weird. It seems like Alacritty 0.13 applies the shift 
+# modifier to the key you want to map. So Cmd+Shift+] is actually Cmd+Shift+}
+# and Cmd+Shift+[ is actually Cmd+Shift+{.
+
 # Next tab
 [[keyboard.bindings]]
 chars = "\u0006n"
-key = "RBracket"
+key = "}"
 mods = "Command|Shift"
 
 # Previous tab
 [[keyboard.bindings]]
 chars = "\u0006p"
-key = "LBracket"
+key = "{"
 mods = "Command|Shift"
+
+###############################################################################
 
 # Resize pane left
 [[keyboard.bindings]]
@@ -156,7 +175,7 @@ history = 100000
 decorations = "Buttonless"
 padding = { x = 3, y = 3 }
 dynamic_padding = true
-#opacity = 0.85
+opacity = 1.0
 
 
 # Nightfox Alacritty Colors

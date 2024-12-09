@@ -16,7 +16,7 @@ alias gf='g fetch'
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 
 # Jetbrains
-alias idea='open -na "IntelliJ IDEA.app"'
+alias idea='open -na "IntelliJ IDEA Ultimate.app"'
 alias gol='open -na "GoLand.app"'
 alias cl='open -na "CLion.app"'
 alias pc='open -na "PyCharm.app"'
@@ -25,3 +25,11 @@ alias rd='open -na "Rider.app"'
 alias fl='open -na "Fleet.app"'
 alias as='open -na "Android Studio.app"'
 
+# I like dogs
+alias dog='cat'
+
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias ..='cd ..'

@@ -116,7 +116,7 @@ alias tf=terraform
 # ==============================================================================
 
 # Jetbrains
-alias idea='open -na "IntelliJ IDEA.app"'
+alias idea='open -na "IntelliJ IDEA Ultimate.app"'
 alias gol='open -na "GoLand.app"'
 alias cl='open -na "CLion.app"'
 alias pc='open -na "PyCharm.app"'

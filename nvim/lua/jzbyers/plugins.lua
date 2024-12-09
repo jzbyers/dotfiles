@@ -78,6 +78,9 @@ require("lazy").setup({
         end
     },
 
+    -- Buffers as tabs
+    {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
+
     -- LSP config
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
@@ -128,20 +131,63 @@ vim.keymap.set('n', '<leader>ps', function()
 end)
 
 require('telescope').setup{
-    defaults = {
-        file_ignore_patterns = { "vendor" },
-        layout_strategy = 'vertical',
-        layout_config = { height = 0.95, width=0.95 },
-        vimgrep_arguments = {
-            'rg',
-            '--color=never',
-            '--no-heading',
-            '--with-filename',
-            '--line-number',
-            '--column',
-            '--smart-case',
-            '--hidden',
-            '--follow',
-        },
-    }
+  defaults = {
+    file_ignore_patterns = { "vendor" },
+    layout_strategy = 'vertical',
+    layout_config = { 
+      horizontal = {
+        preview_width = 0.6,    -- Increase the preview window width as a fraction of the total width
+        results_width = 0.8,    -- Adjust the results window width
+      },
+      vertical = {
+        width = 0.9,            -- Set the overall width for vertical layout
+        height = 0.9,           -- Set the overall height for vertical layout
+      },
+      height = 0.95,            -- Overall width for any layout
+      width=0.95                -- Overall height for any layout
+    },
+    wrap_results = true,
+    -- path_display = { 'smart' },
+    truncate_results = false,
+    vimgrep_arguments = {
+      'rg',
+      '--color=never',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '--hidden',
+      '--follow',
+    },
+  }
 }
+
+-- Configure bufferline
+require("bufferline").setup{
+  options = {
+    mode = "buffers",
+    buffer_close_icon = "",
+    close_icon = "",
+    left_trunc_marker = "",
+    right_trunc_marker = "",
+    offsets = {
+      {
+        filetype = "NvimTree",
+        text = "File Explorer",
+        text_align = "center",
+        separator = true
+      }
+    },
+    color_icons = false,
+    show_buffer_icons = false,
+    show_buffer_close_icons = false,
+    show_close_icon = false,
+    show_tab_indicators = false,
+    tab_size = 24,
+    max_name_length = 24,
+    max_prefix_length = 16,
+    diagnostics = "nvim_lsp",
+  }
+}
+
