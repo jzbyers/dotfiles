@@ -121,6 +121,11 @@ function marks {
     \ls -l "$MARKPATH" | tail -n +2 | sed 's/  / /g' | cut -d' ' -f9- | awk -F ' -> ' '{printf "%-10s -> %s\n", $1, $2}'
 }
 
+# Connect to a local clickhouse database by name
+function ch() {
+    clickhouse client --database=$1
+}
+
 # ==============================================================================
 # ZSH CONFIG
 # ==============================================================================
