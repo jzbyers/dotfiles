@@ -1,7 +1,4 @@
-mkdir -p ~/.config/kitty
-mkdir -p ~/.config/alacritty
-mkdir -p ~/.config/nvim
-mkdir -p ~/.config/bat
+mkdir -p ~/.config
 
 ln -sF ~/src/github.com/jzbyers/dotfiles/zshrc ~/.zshrc
 ln -sF ~/src/github.com/jzbyers/dotfiles/kitty ~/.config/kitty
