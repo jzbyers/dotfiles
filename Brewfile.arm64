@@ -62,7 +62,6 @@ brew "typescript"
 brew "yarn"
 
 brew "protobuf"
-brew "prototool"
 
 brew "pyenv"
 brew "pyenv-virtualenv"
