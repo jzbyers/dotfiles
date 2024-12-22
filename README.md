@@ -6,6 +6,7 @@
     - Keyboard
         - Key Repeat: Fast
         - Delay Until Repeat: Short
+        - Keyboard Shortcuts... Modifier Keys... Switch caps lock and control
     - Trackpad
         - Tap to click
         - Tracking speed: 6th notch
