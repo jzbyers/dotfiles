@@ -6,7 +6,7 @@
 # # Installation instructions: https://docs.brew.sh/Installation
 # # /usr/local for Intel/AMD binaries
 # # /opt/homebrew for ARM binaries
-# export PATH="$PATH:/opt/homebrew/bin"
+export PATH="$PATH:/opt/homebrew/bin"
 
 # Alacritty CLI
 export PATH="$PATH:/Users/jackbyers/src/alacritty/target/release/osx/Alacritty.app/Contents/MacOS"
