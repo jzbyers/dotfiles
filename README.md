@@ -19,7 +19,9 @@
         - Automatically hide and show the Dock: On
 - Install Xcode from App Store
 - Install [Homebrew](https://brew.sh/)
-- Download [InconsolataGo Nerd Font](https://www.nerdfonts.com/font-downloads) and load into Font Book
+- Fonts
+    - [InconsolataGo Nerd Font](https://www.nerdfonts.com/font-downloads) and load into Font Book
+    - [Berkeley Graphics](https://berkeleygraphics.com/)
 - Use Terminal to:
     1. Install Git and setup SSH keys: `brew install git`
     2. Create `src` directory and subdir for my personal github: `mkdir -p src/jzbyers && cd src/jzbyers`
