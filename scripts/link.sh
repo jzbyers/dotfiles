@@ -3,13 +3,13 @@ mkdir -p ~/.config/alacritty
 mkdir -p ~/.config/nvim
 mkdir -p ~/.config/bat
 
-ln -sF ~/src/jzbyers/dotfiles/zshrc ~/.zshrc
-ln -sF ~/src/jzbyers/dotfiles/kitty ~/.config/kitty
-ln -sF ~/src/jzbyers/dotfiles/alacritty ~/.config/alacritty
-ln -sF ~/src/jzbyers/dotfiles/nvim ~/.config/nvim
-ln -sF ~/src/jzbyers/dotfiles/bat ~/.config/bat
-ln -sF ~/src/jzbyers/dotfiles/tmuxconf ~/.tmux.conf
-ln -sF ~/src/jzbyers/dotfiles/psqlrc ~/.psqlrc
-ln -sF ~/src/jzbyers/dotfiles/.gitconfig ~/.gitconfig
-ln -sF ~/src/jzbyers/dotfiles/.githelpers ~/.githelpers
-ln -sF ~/src/jzbyers/dotfiles/ideavimrc ~/.ideavimrc
+ln -sF ~/src/github.com/jzbyers/dotfiles/zshrc ~/.zshrc
+ln -sF ~/src/github.com/jzbyers/dotfiles/kitty ~/.config/kitty
+ln -sF ~/src/github.com/jzbyers/dotfiles/alacritty ~/.config/alacritty
+ln -sF ~/src/github.com/jzbyers/dotfiles/nvim ~/.config/nvim
+ln -sF ~/src/github.com/jzbyers/dotfiles/bat ~/.config/bat
+ln -sF ~/src/github.com/jzbyers/dotfiles/tmuxconf ~/.tmux.conf
+ln -sF ~/src/github.com/jzbyers/dotfiles/psqlrc ~/.psqlrc
+ln -sF ~/src/github.com/jzbyers/dotfiles/.gitconfig ~/.gitconfig
+ln -sF ~/src/github.com/jzbyers/dotfiles/.githelpers ~/.githelpers
+ln -sF ~/src/github.com/jzbyers/dotfiles/ideavimrc ~/.ideavimrc
