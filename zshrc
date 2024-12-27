@@ -6,13 +6,13 @@
 # # Installation instructions: https://docs.brew.sh/Installation
 # # /usr/local for Intel/AMD binaries
 # # /opt/homebrew for ARM binaries
-# export PATH="$PATH:/opt/homebrew/bin"
+export PATH="$PATH:/opt/homebrew/bin"
 
 # Alacritty CLI
-export PATH="$PATH:/Users/jackbyers/src/alacritty/target/release/osx/Alacritty.app/Contents/MacOS"
+export PATH="$PATH:${HOME}/src/alacritty/target/release/osx/Alacritty.app/Contents/MacOS"
 
 # Rust
-export PATH=$PATH:$HOME/.cargo/bin
+export PATH=$PATH:${HOME}/.cargo/bin
 
 # Ruby
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
@@ -20,7 +20,12 @@ export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="/opt/homebrew/lib/ruby/gems/3.3.0/bin:$PATH"
 
 # Python Poetry
-export PATH="/Users/jackbyers/.local/bin:$PATH"
+export PATH="${HOME}/.local/bin:$PATH"
+
+# Go
+export GOPATH="${HOME}/go"
+export GOBIN="${GOPATH}/bin"
+export PATH=${GOBIN}:${PATH}
 
 # # Java
 # if command -v jenv &> /dev/null
@@ -32,7 +37,7 @@ export PATH="/Users/jackbyers/.local/bin:$PATH"
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # # Node
-# export NVM_DIR="$HOME/.nvm"
+# export NVM_DIR="${HOME}/.nvm"
 # # load nvm
 # [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"
 # # load nvm bash completion
@@ -41,32 +46,7 @@ export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/b
 # Vim
 export VISUAL="nvim"
 export EDITOR="nvim"
-export PATH="$PATH:/Users/jackbyers/src/neovim/build/bin"
-
-# # Local Tools, like Python's black formatter and Rust's analyzer
-# export PATH=$PATH:$HOME/.local/bin
-
-# # Postgres
-# export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
-
-# FZF Settings
-# Use `bat` for preview in neovim ctrl-p
-#export FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
-# Use `fd` instead of the default `find` command to traverse the file system
-# while respecting .gitignore.
-export FZF_DEFAULT_COMMAND="fd --type f"
-
-# # Updates PATH for the Google Cloud SDK.
-# source /Users/jackbyers/src/google-cloud-sdk/path.zsh.inc
-# # Enables zsh completion for gcloud.
-# source /Users/jackbyers/src/google-cloud-sdk/completion.zsh.inc
-
-# # Add Google Cloud SQL Proxy to path. The gcloud directory contains the
-# # executable.
-# export PATH=$PATH:/Users/jackbyers/gcloud
-
-# # https://cloud.google.com/blog/products/containers-kubernetes/kubectl-auth-changes-in-gke
-# export USE_GKE_GCLOUD_AUTH_PLUGIN=True
+export PATH="$PATH:${HOME}/src/neovim/build/bin"
 
 # ==============================================================================
 # ALIAS
@@ -104,12 +84,12 @@ alias ssh="TERM=xterm-256color ssh"
 # Search process table (ex. psg zsh)
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
 
-# Use eza for listing files and directories
-alias ls='eza --color=always --long --git --no-time --no-user --no-permissions --group-directories-first'
-
 # terraform
 alias tf=terraform
 
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
 
 # ==============================================================================
 # EDITOR
@@ -168,16 +148,15 @@ bindkey '^?' backward-delete-char
 bindkey '^h' backward-delete-char
 bindkey '^w' backward-kill-word
 
-# allow ctrl-r and ctrl-s to search the history
-bindkey '^r' history-incremental-search-backward
-bindkey '^s' history-incremental-search-forward
-
 # allow ctrl-a and ctrl-e to move to beginning/end of line
 bindkey '^a' beginning-of-line
 bindkey '^e' end-of-line
 
 # bind jj to vi command mode
 bindkey jj vi-cmd-mode
+
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
 # ==============================================================================
 # FUNCTIONS
@@ -239,7 +218,7 @@ function klog() {
 # Set up directory marking commands.
 # See: http://jeroenjanssens.com/2013/08/16/quickly-navigate-your-filesystem-from-the-command-line.html
 # And: https://news.ycombinator.com/item?id=6229001
-export MARKPATH=$HOME/.marks
+export MARKPATH=${HOME}/.marks
 function goto {
     cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
 }
@@ -258,7 +237,7 @@ function marks {
 # ==============================================================================
 
 ## Command history configuration
-HISTFILE=$HOME/.zsh_history
+HISTFILE=${HOME}/.zsh_history
 HISTSIZE=1000000
 SAVEHIST=1000000
 

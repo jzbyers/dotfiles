@@ -80,7 +80,7 @@ key = "T"
 mods = "Command"
 
 ###############################################################################
-# These next two are weird. It seems like Alacritty 0.13 applies the shift 
+# These next two are weird. It seems that Alacritty 0.13.0 applies the shift 
 # modifier to the key you want to map. So Cmd+Shift+] is actually Cmd+Shift+}
 # and Cmd+Shift+[ is actually Cmd+Shift+{.
 
@@ -98,31 +98,33 @@ mods = "Command|Shift"
 
 ###############################################################################
 
-# Resize pane left
+# Resize pane left using Cmd + left arrow
 [[keyboard.bindings]]
 chars = "\u0006H"
 key = "Left"
 mods = "Command"
 
-# Resize pane down
+# Resize pane down using Cmd + down arrow
 [[keyboard.bindings]]
 chars = "\u0006J"
 key = "Down"
 mods = "Command"
 
-# Resize pane up
+# Resize pane up using Cmd + up arrow
 [[keyboard.bindings]]
 chars = "\u0006K"
 key = "Up"
 mods = "Command"
 
-# Resize pane right
+# Resize pane right using Cmd + right arrow
 [[keyboard.bindings]]
 chars = "\u0006L"
 key = "Right"
 mods = "Command"
 
-# Switch to specific tab
+###############################################################################
+# Section: Switch to specific tabs
+###############################################################################
 [[keyboard.bindings]]
 chars = "\u00061"
 key = "Key1"
