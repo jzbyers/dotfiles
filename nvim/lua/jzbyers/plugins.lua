@@ -79,7 +79,7 @@ require("lazy").setup({
     },
 
     -- Buffers as tabs
-    {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
+    -- {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
 
     -- LSP config
     "williamboman/mason.nvim",
@@ -164,30 +164,30 @@ require('telescope').setup{
 }
 
 -- Configure bufferline
-require("bufferline").setup{
-  options = {
-    mode = "buffers",
-    buffer_close_icon = "",
-    close_icon = "",
-    left_trunc_marker = "",
-    right_trunc_marker = "",
-    offsets = {
-      {
-        filetype = "NvimTree",
-        text = "File Explorer",
-        text_align = "center",
-        separator = true
-      }
-    },
-    color_icons = false,
-    show_buffer_icons = false,
-    show_buffer_close_icons = false,
-    show_close_icon = false,
-    show_tab_indicators = false,
-    tab_size = 24,
-    max_name_length = 24,
-    max_prefix_length = 16,
-    diagnostics = "nvim_lsp",
-  }
-}
+-- require("bufferline").setup{
+--   options = {
+--     mode = "buffers",
+--     buffer_close_icon = "",
+--     close_icon = "",
+--     left_trunc_marker = "",
+--     right_trunc_marker = "",
+--     offsets = {
+--       {
+--         filetype = "NvimTree",
+--         text = "File Explorer",
+--         text_align = "center",
+--         separator = true
+--       }
+--     },
+--     color_icons = false,
+--     show_buffer_icons = false,
+--     show_buffer_close_icons = false,
+--     show_close_icon = false,
+--     show_tab_indicators = false,
+--     tab_size = 24,
+--     max_name_length = 24,
+--     max_prefix_length = 16,
+--     diagnostics = "nvim_lsp",
+--   }
+-- }
 
