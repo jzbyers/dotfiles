@@ -32,6 +32,13 @@ export PATH=${GOBIN}:${PATH}
 # then
 #   eval "$(jenv init -)"
 # fi
+export JAVA_HOME="/opt/homebrew/opt/openjdk@21"
+export PATH="${JAVA_HOME}/bin:${PATH}"
+
+# jenv for managing Java versions
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
 
 # VSCode
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
@@ -208,6 +215,23 @@ function h() {
         # if words were passed use it as a search
         history 1 | egrep --color=auto "$@"
     fi
+}
+
+# psql into a postgres database
+function pgin() {
+  vared -p 'Enter host (default=localhost): ' -c host
+  host=${host:-localhost}
+
+  vared -p 'Enter db   (default=postgres): ' -c db
+  db=${db:-postgres}
+
+  vared -p 'Enter user (default=postgres): ' -c user
+  user=${user:-postgres}
+
+  vared -p 'Enter port (default=5432): ' -c port
+  port=${port:-5432}
+
+  psql -h "$host" -p "$port" -d "$db" -U "$user"
 }
 
 # Get logs from Kubernetes pod

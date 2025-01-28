@@ -1,0 +1,22 @@
+# shellcheck shell=bash
+
+# psql into postgres database
+#
+# Usage: run `pgup` in one terminal, and then `pgin` in another
+function pgin() {
+  vared -p 'Enter host (default=localhost): ' -c host
+  host=${host:-localhost}
+
+  vared -p 'Enter db   (default=postgres): ' -c db
+  db=${db:-postgres}
+
+  vared -p 'Enter user (default=postgres): ' -c user
+  user=${user:-debug}
+
+  vared -p 'Enter port (default=5432): ' -c port
+  port=${port:-5432}
+
+  psql -h "$host" -p "$port" -d "$db" -U "$user"
+}
+
+# vi: ft=sh
