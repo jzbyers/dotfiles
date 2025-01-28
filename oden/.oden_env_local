@@ -3,10 +3,13 @@
 # Vim
 export VISUAL="nvim"
 export EDITOR="nvim"
-export PATH="$PATH:/Users/jackbyers/src/neovim/build/bin"
+export PATH="$PATH:/Users/jzbyers/src/neovim/build/bin"
 
 # # Local Tools, like Python's black formatter and Rust's analyzer
 # export PATH=$PATH:$HOME/.local/bin
+
+# Poetry
+export PATH="/Users/jzbyers/.local/bin:$PATH"
 
 # # Postgres
 # export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"

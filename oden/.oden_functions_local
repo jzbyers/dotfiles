@@ -126,6 +126,11 @@ function ch() {
     clickhouse client --database=$1
 }
 
+# Format a file with a Clickhouse query and copy it to clipboard
+function chf() {
+  cat $1 | clickhouse format | pbcopy
+}
+
 # ==============================================================================
 # ZSH CONFIG
 # ==============================================================================

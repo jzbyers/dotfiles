@@ -174,91 +174,78 @@ mods = "Command"
 history = 100000
 
 [window]
-decorations = "Buttonless"
+decorations = "Transparent"
 padding = { x = 3, y = 3 }
 dynamic_padding = true
 opacity = 1.0
-
-
-# Nightfox Alacritty Colors
-## name: terafox
-## upstream: https://github.com/edeneast/nightfox.nvim/raw/main/extra/terafox/alacritty.toml
+title = ""
+dynamic_title = false
 
 [colors.primary]
-background = "#152528"
-foreground = "#e6eaea"
-dim_foreground = "#cbd9d8"
-bright_foreground = "#eaeeee"
+background = "#eff1f5"
+foreground = "#4c4f69"
+dim_foreground = "#8c8fa1"
+bright_foreground = "#4c4f69"
 
 [colors.cursor]
-text = "#e6eaea"
-cursor = "#cbd9d8"
+text = "#eff1f5"
+cursor = "#dc8a78"
 
 [colors.vi_mode_cursor]
-text = "#e6eaea"
-cursor = "#a1cdd8"
+text = "#eff1f5"
+cursor = "#7287fd"
 
 [colors.search.matches]
-foreground = "#e6eaea"
-background = "#425e5e"
+foreground = "#eff1f5"
+background = "#6c6f85"
 
 [colors.search.focused_match]
-foreground = "#e6eaea"
-background = "#7aa4a1"
+foreground = "#eff1f5"
+background = "#40a02b"
 
 [colors.footer_bar]
-foreground = "#e6eaea"
-background = "#254147"
+foreground = "#eff1f5"
+background = "#6c6f85"
 
 [colors.hints.start]
-foreground = "#e6eaea"
-background = "#ff8349"
+foreground = "#eff1f5"
+background = "#df8e1d"
 
 [colors.hints.end]
-foreground = "#e6eaea"
-background = "#254147"
+foreground = "#eff1f5"
+background = "#6c6f85"
 
 [colors.selection]
-text = "#e6eaea"
-background = "#293e40"
+text = "#eff1f5"
+background = "#dc8a78"
 
 [colors.normal]
-black = "#2f3239"
-red = "#e85c51"
-green = "#7aa4a1"
-yellow = "#fda47f"
-blue = "#5a93aa"
-magenta = "#ad5c7c"
-cyan = "#a1cdd8"
-white = "#ebebeb"
+black = "#bcc0cc"
+red = "#d20f39"
+green = "#40a02b"
+yellow = "#df8e1d"
+blue = "#1e66f5"
+magenta = "#ea76cb"
+cyan = "#179299"
+white = "#5c5f77"
 
 [colors.bright]
-black = "#4e5157"
-red = "#eb746b"
-green = "#8eb2af"
-yellow = "#fdb292"
-blue = "#73a3b7"
-magenta = "#b97490"
-cyan = "#afd4de"
-white = "#eeeeee"
-
-[colors.dim]
-black = "#282a30"
-red = "#c54e45"
-green = "#688b89"
-yellow = "#d78b6c"
-blue = "#4d7d90"
-magenta = "#934e69"
-cyan = "#89aeb8"
-white = "#c8c8c8"
+black = "#acb0be"
+red = "#d20f39"
+green = "#40a02b"
+yellow = "#df8e1d"
+blue = "#1e66f5"
+magenta = "#ea76cb"
+cyan = "#179299"
+white = "#6c6f85"
 
 [[colors.indexed_colors]]
 index = 16
-color = "#ff8349"
+color = "#fe640b"
 
 [[colors.indexed_colors]]
 index = 17
-color = "#cb7985"
+color = "#dc8a78"
 
 
 ## Some of these key bindings are set specifically for tmux. See tmuxconf for

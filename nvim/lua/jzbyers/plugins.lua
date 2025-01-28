@@ -19,7 +19,6 @@ require("lazy").setup({
 	},
 
     -- Color scheme
-    { "EdenEast/nightfox.nvim" },
     { 
         "catppuccin/nvim", 
         name = "catppuccin", 
@@ -78,9 +77,6 @@ require("lazy").setup({
         end
     },
 
-    -- Buffers as tabs
-    -- {'akinsho/bufferline.nvim', version = "*", dependencies = 'nvim-tree/nvim-web-devicons'},
-
     -- LSP config
     "williamboman/mason.nvim",
     "williamboman/mason-lspconfig.nvim",
@@ -112,8 +108,7 @@ require("lazy").setup({
 
 }, {})
 
-vim.cmd.colorscheme 'terafox'
--- vim.cmd.colorscheme 'catppuccin-mocha'
+vim.cmd.colorscheme 'catppuccin-latte'
 
 vim.keymap.set('n', '<F7>', vim.diagnostic.goto_prev, {})
 vim.keymap.set('n', '<F8>', vim.diagnostic.goto_next, {})
@@ -162,32 +157,3 @@ require('telescope').setup{
     },
   }
 }
-
--- Configure bufferline
--- require("bufferline").setup{
---   options = {
---     mode = "buffers",
---     buffer_close_icon = "",
---     close_icon = "",
---     left_trunc_marker = "",
---     right_trunc_marker = "",
---     offsets = {
---       {
---         filetype = "NvimTree",
---         text = "File Explorer",
---         text_align = "center",
---         separator = true
---       }
---     },
---     color_icons = false,
---     show_buffer_icons = false,
---     show_buffer_close_icons = false,
---     show_close_icon = false,
---     show_tab_indicators = false,
---     tab_size = 24,
---     max_name_length = 24,
---     max_prefix_length = 16,
---     diagnostics = "nvim_lsp",
---   }
--- }
-
