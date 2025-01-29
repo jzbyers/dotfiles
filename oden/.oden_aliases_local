@@ -5,3 +5,60 @@ alias ssh="TERM=xterm-256color ssh"
 
 # Search process table (ex. psg zsh)
 alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
+
+alias ..='cd ..'
+alias ...='cd ../..'
+
+# Switching architectures
+alias arm="env /usr/bin/arch -arm64 /bin/zsh --login"
+alias intel="env /usr/bin/arch -x86_64 /bin/zsh --login"
+
+# use nvim if it exists
+if command -v nvim 2>&1 >/dev/null; then
+  alias vim=nvim
+fi
+
+# Make directory and parent directories
+alias mkdir="mkdir -pv"
+
+# Neovim instead of vim
+alias vim="nvim"
+
+# Git
+alias g='git'
+alias gs='g status'
+alias ga='g add .'
+alias gc='g commit'
+alias gp='g push'
+alias gl='g l'
+alias gf='g fetch'
+
+alias grep='grep --color=auto'
+alias ssh="TERM=xterm-256color ssh"
+
+# Search process table (ex. psg zsh)
+alias psg="ps aux | grep -v grep | grep -i -e VSZ -e"
+
+# terraform
+alias tf=terraform
+
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+# ==============================================================================
+# EDITOR
+# ==============================================================================
+
+# Jetbrains
+alias idea='open -na "IntelliJ IDEA Ultimate.app"'
+alias gol='open -na "GoLand.app"'
+alias cl='open -na "CLion.app"'
+alias pc='open -na "PyCharm Professional Edition.app"'
+alias ws='open -na "WebStorm.app"'
+alias rd='open -na "Rider.app"'
+alias fl='open -na "Fleet.app"'
+alias as='open -na "Android Studio.app"'
+
+# Use brew-installed ctags instead of the version that comes with XCode
+alias ctags="`brew --prefix`/bin/ctags"
