@@ -174,7 +174,7 @@ mods = "Command"
 history = 100000
 
 [window]
-decorations = "Transparent"
+decorations = "Full"
 padding = { x = 3, y = 3 }
 dynamic_padding = true
 opacity = 1.0
