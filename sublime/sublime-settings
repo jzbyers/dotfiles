@@ -1,0 +1,30 @@
+{
+	"ignored_packages": [
+		/*"Vintage",*/
+		/*"LSP-copilot",*/
+		/*"LSP-pyright",*/
+		/*"SideBarEnhancements",*/
+		/*"Materialize",*/
+		/*"SideBarEnhancements",*/
+		/*"A File Icon",*/
+		/*"Pretty JSON",*/
+		/*"MarkdownPreview",*/
+	],
+	"font_face": "Berkeley Mono",
+	"font_size": 14,
+	"font_options": ["no_italic"],
+	"rulers": [80, 100],
+	"index_files": true,
+	"vintage_start_in_command_mode": true,
+	"vintage_use_clipboard": true,
+	"relative_line_numbers": false,
+	"save_on_focus_lost": true,
+	"highlight_line": true,
+	"caret_style": "phase",
+	"color_scheme": "Catppuccin Frappe.sublime-color-scheme",
+	"theme": "auto",
+	"overlay_scroll_bars": "enabled",
+    "always_show_minimap_viewport": true,
+    "bold_folder_labels": true,
+    "indent_guide_options": [ "draw_normal", "draw_active"],
+}

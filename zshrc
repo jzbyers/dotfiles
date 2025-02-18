@@ -112,6 +112,9 @@ alias rd='open -na "Rider.app"'
 alias fl='open -na "Fleet.app"'
 alias as='open -na "Android Studio.app"'
 
+# Sublime Text
+alias subl='open -na "Sublime Text.app"'
+
 # Use brew-installed ctags instead of the version that comes with XCode
 alias ctags="`brew --prefix`/bin/ctags"
 
