@@ -7,29 +7,29 @@ hide_when_typing = false
 [font]
 size = 14
 
-[font.bold]
-family = "Berkeley Mono"
-style = "Bold"
-
-[font.italic]
-family = "Berkeley Mono"
-style = "Italic"
-
-[font.normal]
-family = "Berkeley Mono"
-style = "Regular"
-
 #[font.bold]
-#family = "InconsolataGo Nerd Font"
+#family = "Berkeley Mono"
 #style = "Bold"
 #
 #[font.italic]
-#family = "InconsolataGo Nerd Font"
+#family = "Berkeley Mono"
 #style = "Italic"
 #
 #[font.normal]
-#family = "InconsolataGo Nerd Font"
+#family = "Berkeley Mono"
 #style = "Regular"
+
+[font.bold]
+family = "InconsolataGo Nerd Font"
+style = "Bold"
+
+[font.italic]
+family = "InconsolataGo Nerd Font"
+style = "Italic"
+
+[font.normal]
+family = "InconsolataGo Nerd Font"
+style = "Regular"
 
 # New vertical split pane
 [[keyboard.bindings]]
@@ -184,11 +184,12 @@ dynamic_title = false
 # Import colors
 [general]
 import = [
-    # uncomment the flavour you want below:
+    # uncomment the flavor you want below:
     #"~/.config/alacritty/catppuccin-latte.toml"
     # "~/.config/alacritty/catppuccin-frappe.toml"
     # "~/.config/alacritty/catppuccin-macchiato.toml"
-     "~/.config/alacritty/catppuccin-mocha.toml"
+    # "~/.config/alacritty/catppuccin-mocha.toml"
+     "~/.config/alacritty/terafox.toml"
 ]
 
 ## Some of these key bindings are set specifically for tmux. See tmuxconf for
