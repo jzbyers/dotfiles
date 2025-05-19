@@ -336,6 +336,7 @@ PROMPT='%B%F{magenta}%2~%f%b %F{blue}${vcs_info_msg_0_}%f
 # source other things, like aliases, functions, etc. for Oden
 sources=(
   "${HOME}/.oden_profile"
+  "${HOME}/.oden_env_local"
 )
 
 for f in "${sources[@]}"; do

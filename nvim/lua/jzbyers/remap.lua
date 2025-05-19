@@ -110,6 +110,10 @@ function ListFunctionsAndMethods()
   })
 end
 
+-- Mapping to open nvim-tree and find the current file
+vim.keymap.set('n', '<leader>e', ':NvimTreeFindFile<CR>', { desc = 'Open Nvim-tree on current buffer' })
+-- Use - to toggle NvimTree too
+vim.keymap.set('n', '-', ':NvimTreeFindFile<CR>', { desc = 'Open Nvim-tree on current buffer' })
 
 --vim.api.nvim_set_keymap('n', '<leader>lf', 
 --  ":lua ListFunctionsAndMethods()<CR>", 

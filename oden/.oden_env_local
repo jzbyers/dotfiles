@@ -8,6 +8,9 @@ export PATH="$PATH:/Users/jzbyers/src/neovim/build/bin"
 # # Local Tools, like Python's black formatter and Rust's analyzer
 # export PATH=$PATH:$HOME/.local/bin
 
+# Rust: add cargo bin to path
+export PATH="$HOME/.cargo/bin:$PATH"
+
 # Poetry
 export PATH="/Users/jzbyers/.local/bin:$PATH"
 
