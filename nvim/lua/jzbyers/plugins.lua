@@ -24,10 +24,7 @@ require("lazy").setup({
       name = "catppuccin", 
       priority = 1000,
   },
-  { 
-    "EdenEast/nightfox.nvim",
-    name = "nightfox"
-  },
+  { "EdenEast/nightfox.nvim" },
 
     -- Syntax highlighting
 	{
@@ -63,24 +60,6 @@ require("lazy").setup({
 		end
 	},
   
-  {
-    'nvim-tree/nvim-tree.lua',
-    version = '*',
-    lazy = false,
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-    },
-    config = function()
-      require('nvim-tree').setup {
-        -- reveals the file in the tree when buffer changes
-        update_focused_file = {
-          enable = true,
-          update_cwd = true,
-        },
-      }
-    end,
-  },
-
   -- Auto-create pairs like parens, quotes, etc.
   "jiangmiao/auto-pairs",
   
@@ -94,6 +73,32 @@ require("lazy").setup({
               -- Configuration here, or leave empty to use defaults
           })
       end
+  },
+
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
+    config = function()
+      require("oil").setup({
+        -- See :help oil-config for all available config options
+        columns = {
+          "icon",
+        },
+        keymaps = {},
+        view_options = {
+          show_hidden = true,
+        },
+
+        vim.keymap.set("n", "-", "<cmd>Oil<CR>", { desc = "Open parent directory" }),
+      })
+    end
   },
   
   -- LSP config
@@ -113,28 +118,26 @@ require("lazy").setup({
   
   -- Copilot
   "github/copilot.vim",
-  
-  -- Markdown preview, install with yarn or npm
-  {
-      "iamcco/markdown-preview.nvim",
-      cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-      build = "cd app && yarn install",
-      init = function()
-          vim.g.mkdp_filetypes = { "markdown" }
-      end,
-      ft = { "markdown" },
-  },
+
+  -- SQL
+  "tpope/vim-dadbod",
+  "kristijanhusak/vim-dadbod-completion",
+  "kristijanhusak/vim-dadbod-ui",
 
 }, {})
 
-vim.cmd.colorscheme 'catppuccin'
---vim.cmd.colorscheme 'terafox'
 
 vim.keymap.set('n', '<F7>', vim.diagnostic.goto_prev, {})
 vim.keymap.set('n', '<F8>', vim.diagnostic.goto_next, {})
 
 -- Configure Telescope
 local builtin = require('telescope.builtin')
+
+builtin.lsp_document_symbols({
+  fname_width = 50,
+  symbol_width = 50
+})
+
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
@@ -146,7 +149,13 @@ vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = 'Telescope git c
 vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = 'Telescope git status with diff' })
 
 -- LSP tools
-vim.keymap.set('n', '<leader>ds', builtin.lsp_document_symbols, { desc = 'Telescope LSP definitions' })
+-- Configure lsp_document_symbols with wider columns
+vim.keymap.set('n', '<leader>ds', function()
+  builtin.lsp_document_symbols({
+    fname_width = 50,    -- Set the desired width for the filename section
+    symbol_width = 50,   -- Set the desired width for the symbol section
+  })
+end, { desc = 'Telescope LSP document symbols (wider columns)' })
 
 -- Vim pickers
 vim.keymap.set('n', '<leader>gm', builtin.marks, { desc = 'Telescope goto mark' })
@@ -172,7 +181,7 @@ require('telescope').setup{
         height = 0.5,
         preview_cutoff = 40,
         prompt_position = "top",
-        width = 0.5
+        width = 0.8
       },
       cursor = {
         height = 0.9,
@@ -197,18 +206,6 @@ require('telescope').setup{
 
 require("catppuccin").setup({
     flavour = "mocha", -- latte, frappe, macchiato, mocha
-    background = { -- :h background
-        light = "latte",
-        dark = "mocha",
-    },
-    transparent_background = false, -- disables setting the background color.
-    show_end_of_buffer = false, -- shows the '~' characters after the end of buffers
-    term_colors = false, -- sets terminal colors (e.g. `g:terminal_color_0`)
-    dim_inactive = {
-        enabled = false, -- dims the background color of inactive window
-        shade = "dark",
-        percentage = 0.15, -- percentage of the shade to apply to the inactive window
-    },
     styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
         comments = { "italic" }, -- Change the style of comments
         conditionals = { "italic" },
@@ -225,3 +222,14 @@ require("catppuccin").setup({
     },
 })
 
+require('nightfox').setup({
+  options = {
+    styles = {
+      comments = "italic",
+      keywords = "bold",
+      types = "italic,bold",
+    }
+  }
+})
+
+vim.cmd.colorscheme 'terafox'
