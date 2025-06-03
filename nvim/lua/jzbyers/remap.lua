@@ -24,23 +24,14 @@ vim.keymap.set("x", "p", "\"_dP")
 vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 
--- Quickfix list
---vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
---vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
-
 -- Format using LSP
 vim.keymap.set('n', '<leader>f', ':lua vim.lsp.buf.format()<CR>', {noremap = true, silent = true})
 
--- Jump to last file in buffer
-vim.keymap.set("n", "<leader>b", "<cmd>e#<CR>")
-
 -- Switching between splits
 vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', {silent = true})
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', {silent = true})
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {silent = true})
 vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {silent = true})
+--vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', {silent = true})
+--vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {silent = true})
 
 -- Make Git fugitive easier to use
 vim.keymap.set("n", "<leader>gb", "<cmd>Git blame<CR>")
@@ -55,15 +46,14 @@ vim.keymap.set("n", "<leader>w", "<cmd>w<CR>")
 -- Suspend
 vim.api.nvim_set_keymap('n', '<leader>s', ':silent suspend<CR>', { noremap = true, silent = true })
 
+vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>zz", {silent = true})
+vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>zz", {silent = true})
+
 -- Easy folding:
 -- zR: decreases the foldlevel to zero -- all folds will be open.
 -- zM: increases the foldlevel to the maximum -- all folds will be closed.
 vim.keymap.set('n', '<leader>fo', 'zR', {noremap = true, silent = true})
 vim.keymap.set('n', '<leader>fc', 'zM', {noremap = true, silent = true})
-
--- Go to next buffer (requires bufferline plugin)
-vim.api.nvim_set_keymap('n', '<C-]>', ':BufferLineCycleNext<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-[>', ':BufferLineCyclePrev<CR>', { noremap = true, silent = true })
 
 -- Close buffer with <leader>bd
 vim.keymap.set("n", "<leader>bd", ":bd<CR>")

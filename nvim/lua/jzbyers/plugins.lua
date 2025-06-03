@@ -12,41 +12,40 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    -- Fuzzy finder
 	{
 		'nvim-telescope/telescope.nvim', tag = '0.1.8',
 		dependencies = { 'nvim-lua/plenary.nvim' }
 	},
 
   -- Color schemes
-  { 
-      "catppuccin/nvim", 
-      name = "catppuccin", 
+  {
+      "catppuccin/nvim",
+      name = "catppuccin",
       priority = 1000,
   },
   { "EdenEast/nightfox.nvim" },
 
-    -- Syntax highlighting
+  -- Syntax highlighting
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		config = function () 
+		config = function ()
 			local configs = require("nvim-treesitter.configs")
 
 			configs.setup({
-				ensure_installed = { 
-					"go", 
+				ensure_installed = {
+					"go",
           "java", "clojure", "kotlin",
-					"python", 
+					"python",
           "rust",
-					"c", "cpp", 
-					"lua", 
+					"c", "cpp",
+					"lua",
           "zig",
 					"javascript", "typescript", "html", "css",
-          "haskell", "ocaml", "scala",
+          "haskell", "ocaml",
           "swift",
           "sql",
-          "dockerfile", "bash", "cmake", "vim", "markdown",
+          "dockerfile", "bash", "cmake", "vim",
           "gitcommit", "git_config", "git_rebase", "gitignore",
           "json", "yaml", "toml",
           "csv", "tsv",
@@ -55,14 +54,14 @@ require("lazy").setup({
 				sync_install = false,
         auto_install = true,
 				highlight = { enable = true },
-				indent = { enable = true },  
+				indent = { enable = true },
 			})
 		end
 	},
-  
+
   -- Auto-create pairs like parens, quotes, etc.
   "jiangmiao/auto-pairs",
-  
+
   -- The best plugin ever?
   {
       "kylechui/nvim-surround",
@@ -100,22 +99,22 @@ require("lazy").setup({
       })
     end
   },
-  
+
   -- LSP config
   "williamboman/mason.nvim",
   "williamboman/mason-lspconfig.nvim",
   "neovim/nvim-lspconfig",
-  
+
   -- Completion and snippets
   "hrsh7th/nvim-cmp",
   "hrsh7th/cmp-nvim-lsp",
   "L3MON4D3/LuaSnip",
-  
+
   -- Git
   "tpope/vim-fugitive",
   --"airblade/vim-gitgutter",
   "tpope/vim-rhubarb",
-  
+
   -- Copilot
   "github/copilot.vim",
 
@@ -162,7 +161,7 @@ vim.keymap.set('n', '<leader>ds', function()
     fname_width = 50,    -- Set the desired width for the filename section
     symbol_width = 50,   -- Set the desired width for the symbol section
   })
-end, { desc = 'Telescope LSP document symbols (wider columns)' })
+end)
 
 -- Vim pickers
 vim.keymap.set('n', '<leader>gm', builtin.marks, { desc = 'Telescope goto mark' })
@@ -231,6 +230,7 @@ require("catppuccin").setup({
 
 require('nightfox').setup({
   options = {
+    transparent = true,
     styles = {
       comments = "italic",
       keywords = "bold",

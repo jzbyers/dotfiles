@@ -1,12 +1,3 @@
-require("mason").setup()
-require("mason-lspconfig").setup({
-    ensure_installed = {
-        "lua_ls",
-        "gopls",
-        "ts_ls"
-    }
-})
-
 local on_attach = function(_, _)
     vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
@@ -17,29 +8,20 @@ end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-require("lspconfig").gopls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = {
-        gopls = {
-            analyses = {
-                unusedparams = true,
-            },
-            staticcheck = true,
-            gofumpt = true,
-        },
+vim.lsp.config['gopls'] = {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+        shadow = true,
+      },
+      staticcheck = true,
     },
+  },
 }
-
-require("lspconfig").ruff.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-}
-
-require("lspconfig").ts_ls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-}
+vim.lsp.enable('gopls')
 
 -- completions and snippet config below (this could be a separate file)
 local cmp = require("cmp")

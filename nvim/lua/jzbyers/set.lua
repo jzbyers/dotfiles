@@ -1,10 +1,10 @@
-vim.opt.guicursor = ""          
+vim.opt.guicursor = ""
+vim.opt.mousescroll = "ver:1,hor:1"
 
--- Kinda digging the "zen" mode of no line numbers
-vim.opt.nu = true        
-vim.opt.relativenumber = true  
+vim.opt.nu = true
+vim.opt.relativenumber = true
 
-vim.opt.tabstop = 4 
+vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
@@ -21,7 +21,7 @@ vim.opt.incsearch = true
 
 vim.opt.termguicolors = true
 
-vim.opt.scrolloff = 8   
+vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 
 vim.opt.updatetime = 50

@@ -8,16 +8,28 @@ hide_when_typing = false
 size = 14
 
 [font.bold]
-family = "Berkeley Mono"
+family = "Victor Mono"
 style = "Bold"
 
 [font.italic]
-family = "Berkeley Mono"
-style = "Italic"
+family = "Victor Mono"
+style = "Oblique"
 
 [font.normal]
-family = "Berkeley Mono"
+family = "Victor Mono"
 style = "Regular"
+
+#[font.bold]
+#family = "Berkeley Mono"
+#style = "Bold"
+#
+#[font.italic]
+#family = "Berkeley Mono"
+#style = "Italic"
+#
+#[font.normal]
+#family = "Berkeley Mono"
+#style = "Regular"
 
 #[font.bold]
 #family = "InconsolataGo Nerd Font"
