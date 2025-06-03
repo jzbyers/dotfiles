@@ -1,9 +1,18 @@
 local on_attach = function(_, _)
-    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
-    vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-    vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {})
-    vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
-    vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+  vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, {})
+  vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
+  vim.keymap.set("n", "gi", vim.lsp.buf.implementation, {})
+  vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+  vim.keymap.set('n', '<leader>fm', ':lua vim.lsp.buf.format()<CR>', {})
+
+  -- Configure lsp_document_symbols with wider columns
+  vim.keymap.set('n', '<leader>ds', function()
+    builtin.lsp_document_symbols({
+      fname_width = 50,    -- Set the desired width for the filename section
+      symbol_width = 50,   -- Set the desired width for the symbol section
+    })
+  end)
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()

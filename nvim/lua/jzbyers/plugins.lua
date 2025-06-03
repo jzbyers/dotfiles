@@ -139,11 +139,6 @@ vim.keymap.set('n', '<F8>', vim.diagnostic.goto_next, {})
 -- Configure Telescope
 local builtin = require('telescope.builtin')
 
-builtin.lsp_document_symbols({
-  fname_width = 50,
-  symbol_width = 50
-})
-
 vim.keymap.set('n', '<C-p>', builtin.git_files, {})
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
@@ -154,23 +149,9 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help ta
 vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = 'Telescope git commits with diff' })
 vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = 'Telescope git status with diff' })
 
--- LSP tools
--- Configure lsp_document_symbols with wider columns
-vim.keymap.set('n', '<leader>ds', function()
-  builtin.lsp_document_symbols({
-    fname_width = 50,    -- Set the desired width for the filename section
-    symbol_width = 50,   -- Set the desired width for the symbol section
-  })
-end)
-
 -- Vim pickers
 vim.keymap.set('n', '<leader>gm', builtin.marks, { desc = 'Telescope goto mark' })
 vim.keymap.set('n', '<leader>qf', builtin.quickfix, { desc = 'Telescope list items in the quickfix list' })
-
-vim.keymap.set('n', '<leader>fm', ':lua vim.lsp.buf.format()<CR>', {})
-vim.keymap.set('n', '<leader>ps', function()
-    builtin.grep_string({ search = vim.fn.input('Grep > ') });
-end)
 
 require('telescope').setup{
   defaults = {

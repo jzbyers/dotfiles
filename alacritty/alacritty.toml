@@ -7,41 +7,29 @@ hide_when_typing = false
 [font]
 size = 14
 
+#[font.bold]
+#family = "Berkeley Mono"
+#style = "Bold"
+#
+#[font.italic]
+#family = "Berkeley Mono"
+#style = "Italic"
+#
+#[font.normal]
+#family = "Berkeley Mono"
+#style = "Regular"
+
 [font.bold]
-family = "Victor Mono"
+family = "InconsolataGo Nerd Font"
 style = "Bold"
 
 [font.italic]
-family = "Victor Mono"
-style = "Oblique"
+family = "InconsolataGo Nerd Font"
+style = "Italic"
 
 [font.normal]
-family = "Victor Mono"
+family = "InconsolataGo Nerd Font"
 style = "Regular"
-
-#[font.bold]
-#family = "Berkeley Mono"
-#style = "Bold"
-#
-#[font.italic]
-#family = "Berkeley Mono"
-#style = "Italic"
-#
-#[font.normal]
-#family = "Berkeley Mono"
-#style = "Regular"
-
-#[font.bold]
-#family = "InconsolataGo Nerd Font"
-#style = "Bold"
-#
-#[font.italic]
-#family = "InconsolataGo Nerd Font"
-#style = "Italic"
-#
-#[font.normal]
-#family = "InconsolataGo Nerd Font"
-#style = "Regular"
 
 # New vertical split pane
 [[keyboard.bindings]]
