@@ -151,7 +151,7 @@ vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = 'Telescope git st
 
 -- Vim pickers
 vim.keymap.set('n', '<leader>gm', builtin.marks, { desc = 'Telescope goto mark' })
-vim.keymap.set('n', '<leader>qf', builtin.quickfix, { desc = 'Telescope list items in the quickfix list' })
+--vim.keymap.set('n', '<leader>qf', builtin.quickfix, { desc = 'Telescope list items in the quickfix list' })
 
 require('telescope').setup{
   defaults = {

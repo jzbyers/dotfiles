@@ -23,4 +23,4 @@ setopt PROMPT_SUBST
 
 # Prompt without check mark, with new line for input
 PROMPT='%B%F{magenta}%2~%f%b %F{blue}${vcs_info_msg_0_}%f
-'$'\U25CF'' '
+'$'$ '

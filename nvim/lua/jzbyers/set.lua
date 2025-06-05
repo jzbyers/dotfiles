@@ -36,20 +36,8 @@ vim.opt.inccommand = "split"
 
 vim.opt.undofile = true
 
-local keyset = vim.keymap.set
-keyset("n", "<down>", ":resize +1<cr>")
-keyset("n", "<up>", ":resize -1<cr>")
-keyset("n", "<right>", ":vertical resize +1<cr>")
-keyset("n", "<left>", ":vertical resize -1<cr>")
 
--- Move up and down more quickly
-keyset('n', '<C-j>', '5j', { noremap = true, silent = true })
-keyset('n', '<C-k>', '5k', { noremap = true, silent = true })
-
--- Close quickfix list
-keyset('n', '<leader>q', ':cclose<CR>', { noremap = true, silent = true })
-
--- Set up tab size configuration for JavaScript and TypeScript
+-- Set up tab size configuration
 vim.api.nvim_create_autocmd({"FileType"}, {
   pattern = {
     "javascript", 

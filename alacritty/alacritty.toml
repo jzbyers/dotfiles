@@ -7,6 +7,18 @@ hide_when_typing = false
 [font]
 size = 14
 
+[font.bold]
+family = "Iosevka Nerd Font Mono"
+style = "Bold"
+
+[font.italic]
+family = "Iosevka Nerd Font Mono"
+style = "Italic"
+
+[font.normal]
+family = "Iosevka Nerd Font Mono"
+style = "Regular"
+
 #[font.bold]
 #family = "Berkeley Mono"
 #style = "Bold"
@@ -19,17 +31,17 @@ size = 14
 #family = "Berkeley Mono"
 #style = "Regular"
 
-[font.bold]
-family = "InconsolataGo Nerd Font"
-style = "Bold"
-
-[font.italic]
-family = "InconsolataGo Nerd Font"
-style = "Italic"
-
-[font.normal]
-family = "InconsolataGo Nerd Font"
-style = "Regular"
+#[font.bold]
+#family = "InconsolataGo Nerd Font"
+#style = "Bold"
+#
+#[font.italic]
+#family = "InconsolataGo Nerd Font"
+#style = "Italic"
+#
+#[font.normal]
+#family = "InconsolataGo Nerd Font"
+#style = "Regular"
 
 # New vertical split pane
 [[keyboard.bindings]]

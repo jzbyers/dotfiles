@@ -1,62 +1,100 @@
 vim.g.mapleader = " "
 
--- Normal mode remaps
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+local keyset = vim.keymap.set
 
-vim.keymap.set("i", "jj", "<Esc>")
+keyset("i", "jj", "<Esc>")
 
 -- Moving lines with J and K
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+keyset("v", "J", ":m '>+1<CR>gv=gv")
+keyset("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Allow half-page jumping to keep cursor in the middle (less disorienting)
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
+keyset("n", "<C-d>", "<C-d>zz")
+keyset("n", "<C-u>", "<C-u>zz")
 
 -- Keep cursor in the middle when cycling through search results
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+keyset("n", "n", "nzzzv")
+keyset("n", "N", "Nzzzv")
 
 -- Better paste
-vim.keymap.set("x", "p", "\"_dP")
+keyset("x", "p", "\"_dP")
 
 -- Yank to clipboard
-vim.keymap.set("n", "<leader>y", "\"+y")
-vim.keymap.set("v", "<leader>y", "\"+y")
+keyset("n", "<leader>y", "\"+y")
+keyset("v", "<leader>y", "\"+y")
 
 -- Format using LSP
-vim.keymap.set('n', '<leader>f', ':lua vim.lsp.buf.format()<CR>', {noremap = true, silent = true})
+keyset('n', '<leader>f', ':lua vim.lsp.buf.format()<CR>', {noremap = true, silent = true})
 
 -- Switching between splits
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', {silent = true})
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {silent = true})
---vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', {silent = true})
---vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {silent = true})
+keyset('n', '<C-h>', '<C-w>h', {silent = true})
+keyset('n', '<C-l>', '<C-w>l', {silent = true})
 
 -- Make Git fugitive easier to use
-vim.keymap.set("n", "<leader>gb", "<cmd>Git blame<CR>")
-vim.keymap.set("n", "<leader>gd", ":Gdiff<cr>", {silent = true})
+keyset("n", "<leader>gb", "<cmd>Git blame<CR>")
+keyset("n", "<leader>gd", ":Gdiff<cr>", {silent = true})
 
 -- Toggle Copilot
-vim.keymap.set("n", "<leader>cd", ":Copilot disable<CR>")
-vim.keymap.set("n", "<leader>ce", ":Copilot enable<CR>")
+keyset("n", "<leader>cd", ":Copilot disable<CR>")
+keyset("n", "<leader>ce", ":Copilot enable<CR>")
 
--- Quick save
-vim.keymap.set("n", "<leader>w", "<cmd>w<CR>")
--- Suspend
-vim.api.nvim_set_keymap('n', '<leader>s', ':silent suspend<CR>', { noremap = true, silent = true })
-
-vim.keymap.set("n", "<M-j>", "<cmd>cnext<CR>zz", {silent = true})
-vim.keymap.set("n", "<M-k>", "<cmd>cprev<CR>zz", {silent = true})
+-- Quick save and suspend
+keyset("n", "<leader>w", "<cmd>w<CR>")
+keyset('n', '<leader>s', ':silent suspend<CR>', { noremap = true, silent = true })
 
 -- Easy folding:
 -- zR: decreases the foldlevel to zero -- all folds will be open.
 -- zM: increases the foldlevel to the maximum -- all folds will be closed.
-vim.keymap.set('n', '<leader>fo', 'zR', {noremap = true, silent = true})
-vim.keymap.set('n', '<leader>fc', 'zM', {noremap = true, silent = true})
+keyset('n', '<leader>fo', 'zR', {noremap = true, silent = true})
+keyset('n', '<leader>fc', 'zM', {noremap = true, silent = true})
 
 -- Close buffer with <leader>bd
-vim.keymap.set("n", "<leader>bd", ":bd<CR>")
+keyset("n", "<leader>bd", ":bd<CR>")
+
+-- Resize splits with arrow keys
+keyset("n", "<down>", ":resize +1<cr>")
+keyset("n", "<up>", ":resize -1<cr>")
+keyset("n", "<right>", ":vertical resize +1<cr>")
+keyset("n", "<left>", ":vertical resize -1<cr>")
+
+function smart_cycle_next()
+  if vim.fn.empty(vim.fn.getqflist()) == 0 then
+    local success, err = pcall(vim.cmd, "cnext")
+    if not success then
+      vim.cmd("cfirst")
+    end
+  elseif vim.fn.empty(vim.fn.getloclist(0)) == 0 then
+    local success, err = pcall(vim.cmd, "lnext")
+    if not success then
+      vim.cmd("lfirst")
+    end
+  else
+    vim.cmd("normal! 5j")
+  end
+end
+
+function smart_cycle_prev()
+  if vim.fn.empty(vim.fn.getqflist()) == 0 then
+    local success, err = pcall(vim.cmd, "cprev")
+    if not success then
+      vim.cmd("clast")
+    end
+  elseif vim.fn.empty(vim.fn.getloclist(0)) == 0 then
+    local success, err = pcall(vim.cmd, "lprev")
+    if not success then
+      vim.cmd("llast")
+    end
+  else
+    vim.cmd("normal! 5k")
+  end
+end
+
+-- Map Ctrl+j and Ctrl+k to smart cycling functions
+keyset("n", "<C-j>", ":lua smart_cycle_next()<CR>", { silent = true })
+keyset("n", "<C-k>", ":lua smart_cycle_prev()<CR>", { silent = true })
+
+-- Close quickfix list
+keyset('n', '<leader>q', ':cclose<CR>', { noremap = true, silent = true })
 
 function ReloadConfig()
   vim.cmd('source ~/.config/nvim/init.lua')
@@ -64,7 +102,7 @@ function ReloadConfig()
 end
 
 -- Reload Neovim config
-vim.keymap.set("n", "<leader>r", ":lua ReloadConfig()<CR>")
+keyset("n", "<leader>r", ":lua ReloadConfig()<CR>")
 
 -- Close all buffers except the current one with :BufOnly
 vim.api.nvim_create_user_command('BufOnly', function()
@@ -75,10 +113,10 @@ vim.api.nvim_create_user_command('BufOnly', function()
   end
 end, {})
 
-vim.keymap.set("n", "<leader>bo", ":BufOnly<CR>")
+keyset("n", "<leader>bo", ":BufOnly<CR>")
 
 -- Use <leader>lf to list functions in the current buffer
-vim.api.nvim_set_keymap('n', '<leader>lf', ":lua require('telescope.builtin').lsp_document_symbols({ symbols={'function', 'method'} })<CR>", { noremap = true, silent = true })
+keyset('n', '<leader>lf', ":lua require('telescope.builtin').lsp_document_symbols({ symbols={'function', 'method'} })<CR>", { noremap = true, silent = true })
 
 function ListFunctionsAndMethods()
   require('telescope.builtin').lsp_document_symbols({
@@ -99,14 +137,4 @@ function ListFunctionsAndMethods()
     end
   })
 end
-
--- Mapping to open nvim-tree and find the current file
-vim.keymap.set('n', '<leader>e', ':NvimTreeFindFile<CR>', { desc = 'Open Nvim-tree on current buffer' })
--- Use - to toggle NvimTree too
-vim.keymap.set('n', '-', ':NvimTreeFindFile<CR>', { desc = 'Open Nvim-tree on current buffer' })
-
---vim.api.nvim_set_keymap('n', '<leader>lf', 
---  ":lua ListFunctionsAndMethods()<CR>", 
---  { noremap = true, silent = true }
---)
 
