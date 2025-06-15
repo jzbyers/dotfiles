@@ -60,7 +60,7 @@ require("lazy").setup({
 	},
 
   -- Auto-create pairs like parens, quotes, etc.
-  "jiangmiao/auto-pairs",
+  --"jiangmiao/auto-pairs",
 
   -- The best plugin ever?
   {
